@@ -1,4 +1,16 @@
 {
   "css.validate": false,
-  "prettier.printWidth": 80
+  "prettier.printWidth": 80,
+  "editor.formatOnSave": true,
+
+  // Prettier será el formateador por defecto
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Para archivos PHP usar Intelephense
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+
+  // Prettier con el plugin de Tailwind
+  "prettier.plugins": ["prettier-plugin-tailwindcss"]
 }
