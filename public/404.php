@@ -28,19 +28,19 @@
 
     <p
       class="mb-6 mt-10 text-base text-gray-700 dark:text-gray-400 sm:text-lg">
-      We can’t seem to find the page you are looking for!
+      ¡Parece que no podemos encontrar la página que estás buscando!
     </p>
 
     <a
       href="/../src/pages/home.php"
       class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3.5 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-      Back to Home Page
+      Volver a la página de inicio
     </a>
   </div>
   <!-- Footer -->
   <p
     class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-sm text-gray-500 dark:text-gray-400">
-    &copy; <span id="year"></span> - TailAdmin
+    &copy; <span id="year"></span> - design by soysantana2
   </p>
 </div>
 

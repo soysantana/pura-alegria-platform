@@ -106,7 +106,7 @@
             </span>
             <input
               type="text"
-              placeholder="Search or type command..."
+              placeholder="Buscar o escribir comando..."
               id="search-input"
               class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pr-14 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[430px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30" />
 
@@ -223,7 +223,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-02.jpg"
+                      src="../images/user/user-02.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -255,7 +255,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-03.jpg"
+                      src="../images/user/user-03.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -287,7 +287,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-04.jpg"
+                      src="../images/user/user-04.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -319,7 +319,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-05.jpg"
+                      src="../images/user/user-05.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -351,7 +351,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-02.jpg"
+                      src="../images/user/user-02.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -383,7 +383,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-03.jpg"
+                      src="../images/user/user-03.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -415,7 +415,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-04.jpg"
+                      src="../images/user/user-04.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -447,7 +447,7 @@
                   <span
                     class="relative z-1 block h-10 w-full max-w-10 rounded-full">
                     <img
-                      src="./images/user/user-05.jpg"
+                      src="../images/user/user-05.jpg"
                       alt="User"
                       class="overflow-hidden rounded-full" />
                     <span
@@ -494,7 +494,7 @@
           href="#"
           @click.prevent="dropdownOpen = ! dropdownOpen">
           <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
-            <img src="./images/user/owner.jpg" alt="User" />
+            <img src="../images/user/owner.jpg" alt="User" />
           </span>
 
           <span class="text-theme-sm mr-1 block font-medium"> Musharof </span>

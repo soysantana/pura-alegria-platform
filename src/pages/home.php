@@ -9,7 +9,7 @@
 <!-- ===== Page Wrapper Start ===== -->
 <div class="flex h-screen overflow-hidden">
   <!-- ===== Sidebar Start ===== -->
-  <?php include_once '../includes/sidebar.php'; ?>
+  <?php include_once '../components/sidebar.php'; ?>
   <!-- ===== Sidebar End ===== -->
 
   <!-- ===== Content Area Start ===== -->
@@ -19,9 +19,9 @@
     <?php include_once '../includes/overlay.php'; ?>
     <!-- Small Device Overlay End -->
 
-    <!-- ===== Header Start ===== -->
-    <?php include_once '../includes/header.php'; ?>
-    <!-- ===== Header End ===== -->
+    <!-- ===== Navbar Start ===== -->
+    <?php include_once '../components/navbar.php'; ?>
+    <!-- ===== Navbar End ===== -->
 
     <!-- ===== Main Content Start ===== -->
     <main>

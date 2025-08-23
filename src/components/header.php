@@ -13,8 +13,28 @@
     </title>
 </head>
 
+<?php $pages = include_once __DIR__ . '/../config/pages.php';
+$currentFile = basename($_SERVER['PHP_SELF']);
+$currentPageData = $pages[$currentFile] ?? ["title" => "Unknown", "modals" => false];
+
+// variable for Alpine.js
+$alpineData = [
+    'page'        => $currentPageData['title'],
+    'loaded'      => true,
+    'darkMode'    => false,
+    'stickyMenu'  => false,
+    'sidebarToggle' => false,
+    'scrollTop'   => false
+];
+
+if (!empty($currentPageData['modals'])) {
+    $alpineData['isProfileInfoModal']    = false;
+    $alpineData['isProfileAddressModal'] = false;
+}
+?>
+
 <body
-    x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data='<?= json_encode($alpineData) ?>'
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
