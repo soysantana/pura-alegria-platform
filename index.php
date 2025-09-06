@@ -2,7 +2,7 @@
 ob_start();
 
 try {
-    require_once('src/config/load.php'); // Aquí puede fallar si no hay conexión DB
+    require_once('src/config/load.php');
 
     if (!$session->isUserLoggedIn(true)) {
         // Usuario NO logueado
@@ -12,8 +12,7 @@ try {
         redirect('src/pages/home.php');
     }
 } catch (Throwable $e) {
-    // Maneja cualquier error que ocurra (como falta de conexión)
-    // Puedes hacer log del error si quieres: error_log($e->getMessage());
+    // Maneja cualquier error que ocurra
     header('Location: public/503.php');
     exit;
 }

@@ -57,8 +57,11 @@
       </button>
       <!-- Hamburger Toggle BTN -->
 
-      <a href="index.html" class="lg:hidden">
-        <img class="dark:hidden" src="../images/logo/logo.svg" alt="Logo" />
+      <a href="#" class="lg:hidden">
+        <img
+          class="dark:hidden"
+          src="../images/logo/logo.svg"
+          alt="Logo" />
         <img
           class="hidden dark:block"
           src="../images/logo/logo-dark.svg"
@@ -126,6 +129,7 @@
       class="shadow-theme-md w-full items-center justify-between gap-4 px-5 py-4 lg:flex lg:justify-end lg:px-0 lg:shadow-none">
       <div class="2xsm:gap-3 flex items-center gap-2">
         <!-- Dark Mode Toggler -->
+        <?php include_once 'darkmode.php'; ?>
         <!-- Dark Mode Toggler -->
 
         <!-- Notification Menu Area -->
@@ -146,7 +150,7 @@
             <img src="../images/user/owner.jpg" alt="User" />
           </span>
 
-          <span class="text-theme-sm mr-1 block font-medium"> Musharof </span>
+          <span class="text-theme-sm mr-1 block font-medium"> Arturo </span>
 
           <svg
             :class="dropdownOpen && 'rotate-180'"
@@ -172,11 +176,11 @@
           <div>
             <span
               class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
-              Musharof Chowdhury
+              Arturo Santana
             </span>
             <span
               class="text-theme-xs mt-0.5 block text-gray-500 dark:text-gray-400">
-              randomuser@pimjo.com
+              santana.inffo@gmail.com
             </span>
           </div>
 
@@ -184,7 +188,7 @@
             class="flex flex-col gap-1 border-b border-gray-200 pt-4 pb-3 dark:border-gray-800">
             <li>
               <a
-                href="profile.html"
+                href="../pages/profile.php"
                 class="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300">
                 <svg
                   class="fill-gray-500 group-hover:fill-gray-700 dark:fill-gray-400 dark:group-hover:fill-gray-300"
