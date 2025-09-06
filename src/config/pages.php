@@ -1,6 +1,27 @@
 <?php
 return [
-    "home.php"       => ["title" => "Dashboard", "modals" => false],
-    "activities.php" => ["title" => "Activities", "modals" => false],
-    "profile.php"    => ["title" => "Profile", "modals" => true]
+    "home.php" => [
+        "title"  => "Dashboard",
+        "modals" => []
+    ],
+
+    "profile.php" => [
+        "title"  => "Profile",
+        "modals" => ["ProfileInfo", "ProfileAddress"]
+    ],
+
+    "activity.php" => [
+        "title"  => "Activity",
+        "modals" => ["AddInfant", "EditInfant", "Delete"]
+    ],
+
+    "add-activity.php" => [
+        "title"  => "AddActivity",
+        "modals" => ["AddActivity", "EditActivity", "Delete"]
+    ],
+
+    "infant-report.php" => [
+        "title"  => "Infant",
+        "modals" => []
+    ],
 ];

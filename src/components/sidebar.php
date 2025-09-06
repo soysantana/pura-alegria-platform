@@ -5,7 +5,7 @@
     <div
         :class="sidebarToggle ? 'justify-center' : 'justify-between'"
         class="flex items-center gap-2 pt-8 sidebar-header pb-7">
-        <a href="index.html">
+        <a href="#">
             <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
                 <img class="dark:hidden" src="../images/logo/logo.svg" alt="Logo" />
                 <img

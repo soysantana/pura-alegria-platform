@@ -45,7 +45,6 @@
     &copy; <span id="year"></span> - design by soysantana2
   </p>
 </div>
-
 <!-- ===== Page Wrapper End ===== -->
 
 <script src="/build/bundle.js"></script>

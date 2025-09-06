@@ -27,27 +27,13 @@
     <main>
       <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
         <!-- Breadcrumb Start -->
-        <div x-data="{ pageName: `Actividades`}">
+        <div x-data="{ pageName: `Asignar a infante`}">
           <?php include_once '../includes/breadcrumb.php'; ?>
         </div>
         <!-- Breadcrumb End -->
 
-        <div
-          class="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
-          <div class="mx-auto w-full max-w-[630px] text-center">
-            <h3
-              class="mb-4 text-theme-xl font-semibold text-gray-800 dark:text-white/90 sm:text-2xl">
-              Card Title Here
-            </h3>
+        <?php include_once '../includes/infant/table-infante.php'; ?>
 
-            <p
-              class="text-sm text-gray-500 dark:text-gray-400 sm:text-base">
-              Start putting content on grids or panels, you can also use
-              different combinations of grids.Please check out the
-              dashboard and other pages
-            </p>
-          </div>
-        </div>
       </div>
     </main>
     <!-- ===== Main Content End ===== -->
@@ -55,6 +41,12 @@
   <!-- ===== Content Area End ===== -->
 </div>
 <!-- ===== Page Wrapper End ===== -->
+
+<!-- BEGIN MODAL -->
+<?php include_once '../includes/infant/infant-add-modal.php'; ?>
+<?php include_once '../includes/infant/infant-edit-modal.php'; ?>
+<?php include_once '../includes/confirm-delete-modal.php'; ?>
+<!-- END MODAL -->
 
 <script src="/build/bundle.js"></script>
 
