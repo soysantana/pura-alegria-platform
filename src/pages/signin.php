@@ -1,3 +1,4 @@
+<?php require_once('../config/load.php'); ?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -45,6 +46,7 @@
               Introduzca su usuario y contraseña para iniciar sesión.
             </p>
           </div>
+          <?php echo display_msg($msg); ?>
           <div>
             <div class="relative py-3 sm:py-5">
               <div class="absolute inset-0 flex items-center">
@@ -56,7 +58,7 @@
                   class="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">O</span>
               </div>
             </div>
-            <form>
+            <form action="auth/login.php" method="POST">
               <div class="space-y-5">
                 <!-- User -->
                 <div>
@@ -66,8 +68,8 @@
                   </label>
                   <input
                     type="text"
-                    id="user"
-                    name="user"
+                    id="username"
+                    name="username"
                     placeholder="Ingrese su usuario"
                     class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                 </div>
@@ -80,6 +82,8 @@
                   <div x-data="{ showPassword: false }" class="relative">
                     <input
                       :type="showPassword ? 'text' : 'password'"
+                      name="password"
+                      id="password"
                       placeholder="Ingrese su contraseña"
                       class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                     <span

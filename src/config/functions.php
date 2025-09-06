@@ -52,15 +52,20 @@ function display_msg($msg = array())
   $output = "";
   if (!empty($msg)) {
     foreach ($msg as $key => $value) {
-      $output .= "<div class=\"alert alert-{$key} alert-dismissible fade show\" role=\"alert\">";
+      $output .= "<div class=\"rounded-xl border border-error-500 bg-error-50 p-4 dark:border-success-500/30 dark:bg-success-500/15\">";
+      $output .= "  <div class=\"flex items-start gap-3\">";
+      $output .= "      <div class=\"-mt-0.5 text-success-500\"></div>";
+      $output .= "      <div>";
+      $output .= "          <h4 class=\"mb-1 text-sm font-semibold text-gray-800 dark:text-white/90\">";
       $output .= remove_junk(first_character($value));
-      $output .= "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
+      $output .= "          </h4>";
+      $output .= "      </div>";
+      $output .= "  </div>";
       $output .= "</div>";
     }
   }
   return $output;
 }
-
 /*--------------------------------------------------------------*/
 /* Function for redirect
 /*--------------------------------------------------------------*/
