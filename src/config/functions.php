@@ -16,7 +16,7 @@ function real_escape($str)
 /*--------------------------------------------------------------*/
 function remove_junk($str)
 {
-  $str = nl2br($str);
+  $str = nl2br($str ?? '');
   $str = htmlspecialchars(strip_tags($str, ENT_QUOTES));
   return $str;
 }
@@ -52,6 +52,7 @@ function display_msg($msg = array())
   $output = "";
   if (!empty($msg)) {
     foreach ($msg as $key => $value) {
+      $output .= "<div class=\"px-4 pb-3 pt-4 sm:px-6 max-w-md w-full my-4 ml-4\">";
       $output .= "<div class=\"rounded-xl border border-error-500 bg-error-50 p-4 dark:border-success-500/30 dark:bg-success-500/15\">";
       $output .= "  <div class=\"flex items-start gap-3\">";
       $output .= "      <div class=\"-mt-0.5 text-success-500\"></div>";
@@ -61,6 +62,7 @@ function display_msg($msg = array())
       $output .= "          </h4>";
       $output .= "      </div>";
       $output .= "  </div>";
+      $output .= "</div>";
       $output .= "</div>";
     }
   }
@@ -72,11 +74,9 @@ function display_msg($msg = array())
 function redirect($url, $permanent = false)
 {
   if (!headers_sent()) {
-    // Enviar la cabecera de redirección
     header('Location: ' . $url, true, ($permanent ? 301 : 302));
-    exit(); // Asegúrate de terminar el script después de redirigir
+    exit();
   } else {
-    // Si las cabeceras ya han sido enviadas, usa un redireccionamiento de JavaScript
     echo '<script type="text/javascript">';
     echo 'window.location.href="' . $url . '";';
     echo '</script>';

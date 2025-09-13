@@ -1,3 +1,8 @@
+<?php
+$page_title = 'Asignar a infante';
+require_once('../config/load.php');
+page_require_level(2);
+?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -32,7 +37,9 @@
         </div>
         <!-- Breadcrumb End -->
 
-        <?php include_once '../includes/infant/table-infante.php'; ?>
+        <?php echo display_msg($msg); ?>
+
+        <?php include_once '../includes/activity/table-infante.php'; ?>
 
       </div>
     </main>
@@ -43,13 +50,9 @@
 <!-- ===== Page Wrapper End ===== -->
 
 <!-- BEGIN MODAL -->
-<?php include_once '../includes/infant/infant-add-modal.php'; ?>
-<?php include_once '../includes/infant/infant-edit-modal.php'; ?>
+<?php include_once '../includes/activity/infant-add-modal.php'; ?>
+<?php include_once '../includes/activity/infant-edit-modal.php'; ?>
 <?php include_once '../includes/confirm-delete-modal.php'; ?>
 <!-- END MODAL -->
 
-<script src="/build/bundle.js"></script>
-
-</body>
-
-</html>
+<?php include_once '../components/footer.php'; ?>

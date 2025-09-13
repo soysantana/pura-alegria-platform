@@ -70,11 +70,18 @@
       </p>
 
       <div class="flex items-center justify-center w-full gap-3 mt-7">
-        <button
-          type="button"
-          class="flex justify-center w-full px-4 py-3 text-sm font-medium text-white rounded-lg bg-error-500 shadow-theme-xs hover:bg-error-600 sm:w-auto">
-          Eliminar definitivamente
-        </button>
+        <form action="<?php echo $deleteActionUrl; ?>" method="POST">
+          <input
+            type="hidden"
+            id="deleteId"
+            name="deleteId"
+            :value="deleteId">
+          <button
+            type="submit"
+            class="flex justify-center w-full px-4 py-3 text-sm font-medium text-white rounded-lg bg-error-500 shadow-theme-xs hover:bg-error-600 sm:w-auto">
+            Eliminar definitivamente
+          </button>
+        </form>
       </div>
     </div>
   </div>

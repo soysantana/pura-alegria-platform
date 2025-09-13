@@ -1,3 +1,8 @@
+<?php
+$page_title = 'Reporte Infante';
+require_once('../config/load.php');
+page_require_level(3);
+?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -43,14 +48,4 @@
 </div>
 <!-- ===== Page Wrapper End ===== -->
 
-<!-- BEGIN MODAL -->
-<?php include_once '../includes/infant/infant-add-modal.php'; ?>
-<?php include_once '../includes/infant/infant-edit-modal.php'; ?>
-<?php include_once '../includes/confirm-delete-modal.php'; ?>
-<!-- END MODAL -->
-
-<script src="/build/bundle.js"></script>
-
-</body>
-
-</html>
+<?php include_once '../components/footer.php'; ?>

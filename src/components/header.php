@@ -37,6 +37,12 @@ if (!empty($currentPageData['modals'])) {
         $alpineData["is{$modal}Modal"] = false;
     }
 }
+
+if (!empty($currentPageData['data'])) {
+    foreach ($currentPageData['data'] as $dataKey => $dataValue) {
+        $alpineData[$dataKey] = $dataValue;
+    }
+}
 ?>
 
 <body
@@ -45,3 +51,5 @@ if (!empty($currentPageData['modals'])) {
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark bg-gray-900': darkMode === true}">
+
+    <?php $user = current_user(); ?>

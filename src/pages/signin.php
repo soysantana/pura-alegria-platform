@@ -1,4 +1,10 @@
-<?php require_once('../config/load.php'); ?>
+<?php
+$page_title = 'Iniciar Sesión';
+require_once('../config/load.php');
+if ($session->isUserLoggedIn(true)) {
+  redirect('/src/pages/home.php', false);
+}
+?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -232,8 +238,4 @@
 </div>
 <!-- ===== Page Wrapper End ===== -->
 
-<script src="/build/bundle.js"></script>
-
-</body>
-
-</html>
+<?php include_once '../components/footer.php'; ?>

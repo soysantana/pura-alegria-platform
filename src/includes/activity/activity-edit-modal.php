@@ -33,9 +33,17 @@
         Actualice los datos para mantener su actividad actualizada.
       </p>
     </div>
-    <form class="flex flex-col">
+    <form action="/src/db/activity/edit-activity.php" method="POST" class="flex flex-col">
       <div class="px-2 overflow-y-auto custom-scrollbar">
         <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+          <div class="col-span-2">
+            <input
+              type="hidden"
+              id="activityId"
+              name="activityId"
+              x-model="editActivityId"
+              class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          </div>
           <div class="col-span-2">
             <label
               class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
@@ -43,6 +51,9 @@
             </label>
             <input
               type="text"
+              id="activityName"
+              name="activityName"
+              x-model="editActivityName"
               class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
           </div>
 
@@ -51,7 +62,11 @@
               Categoria
             </label>
             <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-              <select class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
+              <select
+                id="activityCategory"
+                name="activityCategory"
+                x-model="editActivityCategory"
+                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
                 <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400" disabled selected hidden>
                   Seleccione una categoría
                 </option>
@@ -83,6 +98,9 @@
             </label>
             <input
               type="text"
+              id="activityDescription"
+              name="activityDescription"
+              x-model="editActivityDescription"
               class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
           </div>
         </div>
@@ -95,7 +113,7 @@
           Cerrar
         </button>
         <button
-          type="button"
+          type="submit"
           class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
           Guardar cambios
         </button>

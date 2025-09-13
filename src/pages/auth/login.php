@@ -14,7 +14,7 @@ if (empty($errors)) {
         //Update Sign in time
         updateLastLogIn($user_id);
         $session->msg("s", "Bienvenido a Pura Alegria.");
-        redirect('../pages/home.php', false);
+        redirect('../home.php', false);
     } else {
         $session->msg("d", "Nombre de usuario y/o contraseña incorrecto.");
         redirect('../signin.php', false);

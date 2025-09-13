@@ -1,3 +1,8 @@
+<?php
+$page_title = 'Perfil';
+require_once('../config/load.php');
+page_require_level(3);
+?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -31,7 +36,7 @@
           <?php include_once '../includes/breadcrumb.php'; ?>
         </div>
         <!-- Breadcrumb End -->
-
+        <?php echo display_msg($msg); ?>
         <div
           class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
           <h3
@@ -47,22 +52,22 @@
                 class="flex flex-col items-center w-full gap-6 xl:flex-row">
                 <div
                   class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
-                  <img src="../images/user/owner.jpg" alt="user" />
+                  <img src="../uploads/<?php echo remove_junk($user['picture']); ?>" alt="user" />
                 </div>
                 <div class="order-3 xl:order-2">
                   <h4
                     class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left">
-                    Musharof Chowdhury
+                    <?php echo remove_junk($user['first_name']); ?>
                   </h4>
                   <div
                     class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left">
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                      Team Manager
+                      <?php echo remove_junk($user['group_name']); ?>
                     </p>
                     <div
                       class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                      Arizona, United States
+                      <?php echo remove_junk($user['country']); ?>
                     </p>
                   </div>
                 </div>
@@ -108,7 +113,7 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      Musharof
+                      <?php echo remove_junk($user['first_name']); ?>
                     </p>
                   </div>
 
@@ -119,7 +124,7 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      Chowdhury
+                      <?php echo remove_junk($user['last_name']); ?>
                     </p>
                   </div>
 
@@ -130,7 +135,7 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      randomuser@pimjo.com
+                      <?php echo remove_junk($user['email']); ?>
                     </p>
                   </div>
 
@@ -141,18 +146,7 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      +09 363 398 46
-                    </p>
-                  </div>
-
-                  <div>
-                    <p
-                      class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                      Biografía
-                    </p>
-                    <p
-                      class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      Team Manager
+                      <?php echo remove_junk($user['phone']); ?>
                     </p>
                   </div>
                 </div>
@@ -197,7 +191,7 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      United States
+                      <?php echo remove_junk($user['country']); ?>
                     </p>
                   </div>
 
@@ -208,18 +202,18 @@
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      Arizona, United States
+                      <?php echo remove_junk($user['city']); ?>
                     </p>
                   </div>
 
                   <div>
                     <p
                       class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                      Código Postal
+                      Dirección
                     </p>
                     <p
                       class="text-sm font-medium text-gray-800 dark:text-white/90">
-                      ERT 2489
+                      <?php echo remove_junk($user['address']); ?>
                     </p>
                   </div>
                 </div>
@@ -259,8 +253,4 @@
 <?php include_once '../includes/profile/profile-address-modal.php'; ?>
 <!-- END MODAL -->
 
-<script src="/build/bundle.js"></script>
-
-</body>
-
-</html>
+<?php include_once '../components/footer.php'; ?>

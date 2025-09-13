@@ -18,6 +18,14 @@
             <div class="flex items-center">
               <p
                 class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                Nombre de la cuidadora
+              </p>
+            </div>
+          </th>
+          <th class="py-3">
+            <div class="flex items-center">
+              <p
+                class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
                 Actividad
               </p>
             </div>
@@ -33,41 +41,34 @@
         </tr>
       </thead>
       <!-- table header end -->
-
+      <?php $logs = find_my_infants_by_tutors(); ?>
       <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Cambio de pañal
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                2025-08-31
-              </p>
-            </div>
-          </td>
-        </tr>
-        <!-- table item -->
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Almuerzo
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                2025-08-31
-              </p>
-            </div>
-          </td>
-        </tr>
+        <?php foreach ($logs as $log): ?>
+          <tr>
+            <td class="py-3">
+              <div class="flex items-center">
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                  <?php echo remove_junk(ucfirst($log['caregiver_name'])); ?>
+                </p>
+              </div>
+            </td>
+            <td class="py-3">
+              <div class="flex items-center">
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                  <?php echo remove_junk(ucfirst($log['activity_name'])); ?>
+                </p>
+              </div>
+            </td>
+            <td class="py-3">
+              <div class="flex items-center">
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                  <?php echo remove_junk(date('d/m/Y h:i A', strtotime($log['created_at']))); ?>
+                </p>
+              </div>
+            </td>
+          </tr>
+          <!-- table item -->
+        <?php endforeach; ?>
         <!-- table body end -->
       </tbody>
     </table>

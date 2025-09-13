@@ -32,8 +32,12 @@
         Actualiza tus datos para mantener tu perfil al día.
       </p>
     </div>
-    <form class="flex flex-col">
-      <div class="custom-scrollbar h-[400px] overflow-y-auto px-2">
+    <form
+      class="flex flex-col"
+      action="/src/db/user/edit-user.php"
+      method="POST"
+      enctype="multipart/form-data">
+      <div class="custom-scrollbar overflow-y-auto px-2">
         <div class="mt-2">
           <h5
             class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
@@ -48,7 +52,9 @@
               </label>
               <input
                 type="text"
-                value="Musharof"
+                id="firstName"
+                name="firstName"
+                value="<?php echo remove_junk(ucfirst($user['first_name'])); ?>"
                 class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
             </div>
 
@@ -59,7 +65,9 @@
               </label>
               <input
                 type="text"
-                value="Chowdhury"
+                id="lastName"
+                name="lastName"
+                value="<?php echo remove_junk(ucfirst($user['last_name'])); ?>"
                 class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
             </div>
 
@@ -70,7 +78,9 @@
               </label>
               <input
                 type="text"
-                value="randomuser@pimjo.com"
+                id="email"
+                name="email"
+                value="<?php echo remove_junk($user['email']); ?>"
                 class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
             </div>
 
@@ -81,19 +91,22 @@
               </label>
               <input
                 type="text"
-                value="+09 363 398 46"
+                id="phone"
+                name="phone"
+                value="<?php echo remove_junk($user['phone']); ?>"
                 class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
             </div>
-
-            <div class="col-span-2">
+            <div class="col-span-2 lg:col-span-3">
               <label
                 class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                Biografía
+                Imagen
               </label>
               <input
-                type="text"
-                value="Team Manager"
-                class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+                type="file"
+                id="picture"
+                name="picture"
+                accept="image/*"
+                class="focus:border-ring-brand-300 shadow-theme-xs focus:file:ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pr-3 file:pl-3.5 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:text-white/90 dark:file:border-gray-800 dark:file:bg-white/[0.03] dark:file:text-gray-400 dark:placeholder:text-gray-400">
             </div>
           </div>
         </div>
@@ -106,7 +119,7 @@
           Cerrar
         </button>
         <button
-          type="button"
+          type="submit"
           class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
           Guardar Cambios
         </button>

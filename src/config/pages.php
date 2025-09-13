@@ -2,7 +2,8 @@
 return [
     "home.php" => [
         "title"  => "Dashboard",
-        "modals" => []
+        "modals" => ["AddInfant", "AssignCaregiver", "Delete"],
+        "data" => ['deleteId' => '']
     ],
 
     "profile.php" => [
@@ -12,16 +13,54 @@ return [
 
     "activity.php" => [
         "title"  => "Activity",
-        "modals" => ["AddInfant", "EditInfant", "Delete"]
+        "modals" => ["AddInfant", "EditInfant", "Delete"],
+        "data" => ['deleteId' => '']
     ],
 
     "add-activity.php" => [
         "title"  => "AddActivity",
-        "modals" => ["AddActivity", "EditActivity", "Delete"]
+        "modals" => ["AddActivity", "EditActivity", "Delete"],
+        "data" => [
+            'editActivityId' => '',
+            'editActivityName' => '',
+            'editActivityCategory' => '',
+            'editActivityDescription' => '',
+            'deleteId' => ''
+        ]
     ],
 
     "infant-report.php" => [
         "title"  => "Infant",
         "modals" => []
     ],
+
+    "infant.php" => [
+        "title"  => "InfantManager",
+        "modals" => ["AddInfant", "EditInfant", "Delete"],
+        "data" => [
+            'editInfantId' => '',
+            'editInfantFname' => '',
+            'editInfantLname' => '',
+            'editInfantDate' => '',
+            'editInfantGender' => '',
+            'editInfantTutorId' => '',
+            'deleteId' => ''
+        ]
+    ],
+
+    "user.php" => [
+        "title"  => "UserManager",
+        "modals" => ["EditUser", "Delete"],
+        "data" => [
+            'editUserId' => '',
+            'editUserStatus' => '',
+            'editUserLevel' => '',
+            'deleteId' => ''
+        ]
+    ],
+
+    "group-user.php" => [
+        "title"  => "GroupUser",
+        "modals" => []
+    ]
 ];

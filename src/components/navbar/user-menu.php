@@ -7,10 +7,10 @@
         href="#"
         @click.prevent="dropdownOpen = ! dropdownOpen">
         <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
-            <img src="../images/user/owner.jpg" alt="User" />
+            <img src="../uploads/<?php echo remove_junk($user['picture']); ?>" alt="User" />
         </span>
 
-        <span class="text-theme-sm mr-1 block font-medium"> Arturo </span>
+        <span class="text-theme-sm mr-1 block font-medium"> <?php echo remove_junk(ucfirst($user['first_name'])); ?> </span>
 
         <svg
             :class="dropdownOpen && 'rotate-180'"
@@ -36,11 +36,12 @@
         <div>
             <span
                 class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
-                Arturo Santana
+                <?php echo remove_junk(ucfirst($user['first_name']) . ' ' . ucfirst($user['last_name'])); ?>
             </span>
             <span
                 class="text-theme-xs mt-0.5 block text-gray-500 dark:text-gray-400">
-                santana.inffo@gmail.com
+                <?php echo remove_junk($user['email']) ?>
+
             </span>
         </div>
 

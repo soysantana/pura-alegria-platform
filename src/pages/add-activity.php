@@ -1,3 +1,8 @@
+<?php
+$page_title = 'Agregar Actividades';
+require_once('../config/load.php');
+page_require_level(2);
+?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
 <!-- ===== Header End ===== -->
@@ -31,6 +36,7 @@
                     <?php include_once '../includes/breadcrumb.php'; ?>
                 </div>
                 <!-- Breadcrumb End -->
+                <?php echo display_msg($msg); ?>
 
                 <?php include_once '../includes/activity/table.php'; ?>
 
@@ -48,8 +54,4 @@
 <?php include_once '../includes/confirm-delete-modal.php'; ?>
 <!-- END MODAL -->
 
-<script src="/build/bundle.js"></script>
-
-</body>
-
-</html>
+<?php include_once '../components/footer.php'; ?>
