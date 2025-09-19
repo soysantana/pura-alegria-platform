@@ -129,7 +129,6 @@
       class="shadow-theme-md w-full items-center justify-between gap-4 px-5 py-4 lg:flex lg:justify-end lg:px-0 lg:shadow-none">
       <div class="2xsm:gap-3 flex items-center gap-2">
         <!-- Dark Mode Toggler -->
-        <?php include_once 'navbar/toggle-theme.php'; ?>
         <!-- Dark Mode Toggler -->
 
         <!-- Notification Menu Area -->

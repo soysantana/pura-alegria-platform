@@ -53,9 +53,9 @@ function display_msg($msg = array())
   if (!empty($msg)) {
     foreach ($msg as $key => $value) {
       $output .= "<div class=\"px-4 pb-3 pt-4 sm:px-6 max-w-md w-full my-4 ml-4\">";
-      $output .= "<div class=\"rounded-xl border border-error-500 bg-error-50 p-4 dark:border-success-500/30 dark:bg-success-500/15\">";
+      $output .= "<div class=\"rounded-xl border border-{$key}-500 bg-{$key}-50 p-4 dark:border-{$key}-500/30 dark:bg-{$key}-500/15\">";
       $output .= "  <div class=\"flex items-start gap-3\">";
-      $output .= "      <div class=\"-mt-0.5 text-success-500\"></div>";
+      $output .= "      <div class=\"-mt-0.5 text-{$key}-500\"></div>";
       $output .= "      <div>";
       $output .= "          <h4 class=\"mb-1 text-sm font-semibold text-gray-800 dark:text-white/90\">";
       $output .= remove_junk(first_character($value));

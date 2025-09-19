@@ -61,6 +61,13 @@ return [
 
     "group-user.php" => [
         "title"  => "GroupUser",
-        "modals" => []
+        "modals" => ["AddGroup", "EditGroup", "Delete"],
+        "data" => [
+            'editGroupId' => '',
+            'editGroupName' => '',
+            'editGroupLevel' => '',
+            'editGroupStatus' => '',
+            'deleteId' => ''
+        ]
     ]
 ];

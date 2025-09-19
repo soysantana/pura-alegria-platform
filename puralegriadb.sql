@@ -50,12 +50,12 @@ CREATE TABLE IF NOT EXISTS `infants` (
   PRIMARY KEY (`id`),
   KEY `tutor_id` (`tutor_id`),
   CONSTRAINT `infants_ibfk_1` FOREIGN KEY (`tutor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla pura_alegria_db.infants: ~2 rows (aproximadamente)
 INSERT INTO `infants` (`id`, `first_name`, `last_name`, `birth_date`, `gender`, `tutor_id`, `picture`, `created_at`, `updated_at`) VALUES
 	(1, 'Maicol', 'Santana', '2003-12-10', 'M', 5, 'infant/7372.jpg', '2025-09-08 12:34:30', '2025-09-09 16:57:39'),
-	(2, 'Luna', 'Santana', '2006-12-10', 'F', 2, 'infant/ed69.jpg', '2025-09-08 12:47:57', '2025-09-09 17:01:52');
+	(2, 'Luna', 'Vasquez', '2006-12-10', 'F', 2, 'infant/ed69.jpg', '2025-09-08 12:47:57', '2025-09-14 12:06:01');
 
 -- Volcando estructura para tabla pura_alegria_db.infant_activity_logs
 CREATE TABLE IF NOT EXISTS `infant_activity_logs` (
@@ -73,12 +73,13 @@ CREATE TABLE IF NOT EXISTS `infant_activity_logs` (
   CONSTRAINT `infant_activity_logs_ibfk_1` FOREIGN KEY (`infant_id`) REFERENCES `infants` (`id`) ON DELETE CASCADE,
   CONSTRAINT `infant_activity_logs_ibfk_2` FOREIGN KEY (`caregiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `infant_activity_logs_ibfk_3` FOREIGN KEY (`activity_id`) REFERENCES `activities` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla pura_alegria_db.infant_activity_logs: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla pura_alegria_db.infant_activity_logs: ~3 rows (aproximadamente)
 INSERT INTO `infant_activity_logs` (`id`, `infant_id`, `caregiver_id`, `activity_id`, `notes`, `created_at`, `updated_at`) VALUES
-	(2, 1, 3, 1, NULL, '2025-09-09 13:49:10', '2025-09-09 17:49:10'),
-	(3, 2, 4, 2, 'Almuerzo a las 9:50AM', '2025-09-09 10:53:30', '2025-09-09 14:53:30');
+	(1, 1, 3, 1, NULL, '2025-09-09 13:49:10', '2025-09-14 16:48:48'),
+	(2, 2, 4, 2, 'Almuerzo a las 9:50AM', '2025-09-09 10:53:30', '2025-09-14 16:48:50'),
+	(4, 1, 3, 2, '', '2025-09-15 10:50:56', '2025-09-15 14:50:56');
 
 -- Volcando estructura para tabla pura_alegria_db.infant_caregivers
 CREATE TABLE IF NOT EXISTS `infant_caregivers` (
@@ -92,12 +93,13 @@ CREATE TABLE IF NOT EXISTS `infant_caregivers` (
   KEY `caregiver_id` (`caregiver_id`),
   CONSTRAINT `infant_caregivers_ibfk_1` FOREIGN KEY (`infant_id`) REFERENCES `infants` (`id`) ON DELETE CASCADE,
   CONSTRAINT `infant_caregivers_ibfk_2` FOREIGN KEY (`caregiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla pura_alegria_db.infant_caregivers: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla pura_alegria_db.infant_caregivers: ~3 rows (aproximadamente)
 INSERT INTO `infant_caregivers` (`id`, `infant_id`, `caregiver_id`, `created_at`, `updated_at`) VALUES
 	(1, 2, 4, '2025-09-08 17:55:17', '2025-09-08 23:08:09'),
-	(5, 2, 3, '2025-09-09 10:25:01', '2025-09-09 14:25:01');
+	(5, 2, 3, '2025-09-09 10:25:01', '2025-09-09 14:25:01'),
+	(6, 1, 3, '2025-09-15 10:50:23', '2025-09-15 14:50:23');
 
 -- Volcando estructura para tabla pura_alegria_db.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -125,11 +127,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Volcando datos para la tabla pura_alegria_db.users: ~5 rows (aproximadamente)
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `country`, `city`, `address`, `phone`, `password`, `picture`, `status`, `user_level`, `last_login`, `created_at`, `updated_at`) VALUES
-	(1, 'Arturo', 'Santana', 'santana', 'santana.inffo@gmail.com', 'República Dominicana', 'Cotui', 'Avenidad Maria Trinidad Sanchez', '+1 (809)-451-1877', '$2y$10$wPGoGyNBOPqxRA4pywoEAuL7pvDf1nqzK5FMnM9Zo08fuxmMdpCkG', 'user/4f2c.jpg', 1, 1, '2025-09-09 23:18:29', '2025-08-21 15:18:53', '2025-09-09 23:18:29'),
-	(2, 'Padre t1', 'last', 'tutor', 'tutor@mail.com', 'República Dominicana', 'Olimpico', 'Avenidad Maria Trinidad Sanchez', '+1 (888) 111-2222', '$2y$10$Vowa647cbJN6WjNSJ1ucA.BmI6PBmFJjYwHdap1jrnUiHZJYskp6.', 'user/9d53.jpg', 1, 3, '2025-09-09 23:18:08', '2025-09-08 15:55:14', '2025-09-09 23:18:08'),
-	(3, 'Cuidadora 1', 'Last', 'caregiver1', '', NULL, NULL, NULL, '', '$2y$10$ItRyI6bbOMR5Hue7mQcZnesfOJuZ6gLmvxWQaX/CHymZIHTXmMcaS', 'user/22ec.jpg', 1, 2, '2025-09-09 18:45:54', '2025-09-08 21:35:35', '2025-09-09 18:45:54'),
-	(4, 'Cuidadora 2', 'Last', 'caregiver2', '', NULL, NULL, NULL, '', '$2y$10$idq8xsGn0lzZjex7FO96Hu1Z3GaWxiHifIpd8wlmBeWTYR1Yx6MsK', 'user/c38e.jpg', 1, 2, '2025-09-09 14:51:46', '2025-09-08 21:36:02', '2025-09-09 14:51:46'),
-	(5, 'Padre t2', 'Last', 'tutor2', 'tutor@mail.com', 'República Dominicana', 'Cotui', 'Avenidad Maria Trinidad Sanchez', '+1 (888) 111-2222', '$2y$10$Vowa647cbJN6WjNSJ1ucA.BmI6PBmFJjYwHdap1jrnUiHZJYskp6.', 'user/e04f.jpg', 1, 3, '2025-09-09 17:45:51', '2025-09-09 17:45:40', '2025-09-09 17:47:26');
+	(1, 'Arturo', 'Santana', 'santana', 'santana.inffo@gmail.com', 'República Dominicana', 'Cotui', 'Avenidad Maria Trinidad Sanchez', '+1 (809)-451-1877', '$2y$10$wPGoGyNBOPqxRA4pywoEAuL7pvDf1nqzK5FMnM9Zo08fuxmMdpCkG', 'user/4f2c.jpg', 1, 1, '2025-09-15 14:53:36', '2025-08-21 15:18:53', '2025-09-15 14:53:36'),
+	(2, 'Padre t1', 'Last', 'tutor', 'tutor@mail.com', 'República Dominicana', 'Olimpico', 'Avenidad Maria Trinidad Sanchez', '+1 (888) 111-2222', '$2y$10$Vowa647cbJN6WjNSJ1ucA.BmI6PBmFJjYwHdap1jrnUiHZJYskp6.', 'user/9d53.jpg', 1, 3, '2025-09-15 14:51:13', '2025-09-08 15:55:14', '2025-09-15 14:51:13'),
+	(3, 'Cuidadora 1', 'Last', 'caregiver1', '', NULL, NULL, NULL, '', '$2y$10$ItRyI6bbOMR5Hue7mQcZnesfOJuZ6gLmvxWQaX/CHymZIHTXmMcaS', 'user/22ec.jpg', 1, 2, '2025-09-15 14:52:23', '2025-09-08 21:35:35', '2025-09-15 14:52:23'),
+	(4, 'Cuidadora 2', 'Last', 'caregiver2', '', NULL, NULL, NULL, '', '$2y$10$idq8xsGn0lzZjex7FO96Hu1Z3GaWxiHifIpd8wlmBeWTYR1Yx6MsK', 'user/c38e.jpg', 1, 2, '2025-09-09 14:51:46', '2025-09-08 21:36:02', '2025-09-15 14:48:16'),
+	(5, 'Padre t2', 'Last', 'tutor2', 'tutor@mail.com', 'República Dominicana', 'Cotui', 'Avenidad Maria Trinidad Sanchez', '+1 (888) 111-2222', '$2y$10$Vowa647cbJN6WjNSJ1ucA.BmI6PBmFJjYwHdap1jrnUiHZJYskp6.', 'user/e04f.jpg', 1, 3, '2025-09-15 14:51:52', '2025-09-09 17:45:40', '2025-09-15 14:51:52');
 
 -- Volcando estructura para tabla pura_alegria_db.user_groups
 CREATE TABLE IF NOT EXISTS `user_groups` (
@@ -142,11 +144,11 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `group_name` (`group_name`),
   UNIQUE KEY `group_level` (`group_level`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla pura_alegria_db.user_groups: ~3 rows (aproximadamente)
 INSERT INTO `user_groups` (`id`, `group_name`, `group_level`, `group_status`, `created_at`, `updated_at`) VALUES
-	(1, 'Admin', 1, 1, '2025-08-21 15:11:33', '2025-08-21 15:11:33'),
+	(1, 'Admin', 1, 1, '2025-08-21 15:11:33', '2025-09-14 18:20:47'),
 	(2, 'Cuidadora', 2, 1, '2025-08-21 15:12:06', '2025-08-21 15:12:06'),
 	(3, 'Tutor', 3, 1, '2025-08-21 15:12:25', '2025-08-21 15:12:25');
 

@@ -324,15 +324,3 @@ function page_require_level($require_level)
     redirect('/src/pages/home.php', false);
   }
 }
-/*--------------------------------------------------------------*/
-/* Function for checking which user level has access to a feature
-  /* level for accessing specific functionality or content
-  /*--------------------------------------------------------------*/
-function user_can_access($required_level)
-{
-  global $session;
-  $current_user = current_user();
-
-  // Comprobar si el nivel del usuario es mayor o igual al requerido
-  return $current_user['user_level'] <= $required_level;
-}

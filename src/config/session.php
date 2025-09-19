@@ -38,7 +38,7 @@ class Session
   {
     if (!empty($msg)) {
       if (strlen(trim($type)) == 1) {
-        $type = str_replace(array('d', 'i', 'w', 's'), array('danger', 'info', 'warning', 'success'), $type);
+        $type = str_replace(array('d', 'i', 'w', 's'), array('error', 'info', 'warning', 'success'), $type);
       }
       $_SESSION['msg'][$type] = $msg;
     } else {

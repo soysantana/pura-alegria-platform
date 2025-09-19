@@ -198,7 +198,7 @@ if ($session->isUserLoggedIn(true)) {
             <img src="../images/logo/auth-logo.svg" alt="Logo" />
           </a>
           <p class="text-center text-gray-400 dark:text-white/60">
-            Free and Open-Source Tailwind CSS Admin Dashboard Template
+            Creciendo, jugando y aprendiendo con amor cada día.
           </p>
         </div>
       </div>

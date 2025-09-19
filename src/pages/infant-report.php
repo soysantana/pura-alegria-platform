@@ -37,6 +37,8 @@ page_require_level(3);
                 </div>
                 <!-- Breadcrumb End -->
 
+                <?php echo display_msg($msg); ?>
+
                 <?php include_once '../includes/infant/card-infant.php'; ?>
                 <?php include_once '../includes/infant/table-infant-report.php'; ?>
 
