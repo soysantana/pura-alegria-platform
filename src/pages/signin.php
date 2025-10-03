@@ -64,7 +64,7 @@ if ($session->isUserLoggedIn(true)) {
                   class="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">O</span>
               </div>
             </div>
-            <form action="auth/login.php" method="POST">
+            <form action="/src/auth/login.php" method="POST">
               <div class="space-y-5">
                 <!-- User -->
                 <div>

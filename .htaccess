@@ -1,1 +1,12 @@
 ErrorDocument 404 /public/404.php
+
+# Activar rewrite
+RewriteEngine On
+
+# Si el archivo o directorio real existe, no reescribir
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Reescribir /nombre -> /pages/nombre.php
+RewriteRule ^([A-Za-z0-9\-_]+)/?$ src/pages/$1.php [L]

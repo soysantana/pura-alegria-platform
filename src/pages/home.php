@@ -9,6 +9,11 @@ if (!$session->isUserLoggedIn(true)) {
 <?php
 $current_user = current_user();
 
+if (isset($current_user['user_level']) && $current_user['user_level'] == 2) {
+  header("Location: /src/pages/add-activity.php");
+  exit();
+}
+
 if (isset($current_user['user_level']) && $current_user['user_level'] == 3) {
   header("Location: /src/pages/infant-report.php");
   exit();

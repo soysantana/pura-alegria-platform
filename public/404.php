@@ -1,3 +1,8 @@
+<?php
+$page_title = '404 No encontrado';
+require_once(__DIR__ . '/../src/config/load.php');
+?>
+
 <!-- ===== Header Start ===== -->
 <?php include_once __DIR__ . '/../src/components/header.php'; ?>
 <!-- ===== Header End ===== -->

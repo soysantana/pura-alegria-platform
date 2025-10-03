@@ -69,5 +69,15 @@ return [
             'editGroupStatus' => '',
             'deleteId' => ''
         ]
+    ],
+
+    "products.php" => [
+        "title"  => "ProductsList",
+        "modals" => []
+    ],
+
+    "products-add.php" => [
+        "title"  => "ProductsList",
+        "modals" => []
     ]
 ];

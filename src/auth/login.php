@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../../config/load.php');
+require_once(__DIR__ . '/../config/load.php');
 
 $req_fields = array('username', 'password');
 validate_fields($req_fields);
@@ -14,12 +14,12 @@ if (empty($errors)) {
         //Update Sign in time
         updateLastLogIn($user_id);
         $session->msg("s", "Bienvenido a Pura Alegria.");
-        redirect('../home.php', false);
+        redirect('/home', false);
     } else {
         $session->msg("d", "Nombre de usuario y/o contraseña incorrecto.");
-        redirect('../signin.php', false);
+        redirect('/signin', false);
     }
 } else {
     $session->msg("w", $errors);
-    redirect('../signin.php', false);
+    redirect('/signin', false);
 }

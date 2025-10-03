@@ -28,7 +28,7 @@
             <!-- Menu Item Dashboard -->
             <li>
                 <a
-                    href="home.php"
+                    href="/home"
                     @click="selected = (selected === 'Dashboard' ? '':'Dashboard')"
                     class="menu-item group"
                     :class=" (selected === 'Dashboard' || page === 'Dashboard') ? 'menu-item-active' : 'menu-item-inactive'">
@@ -58,7 +58,7 @@
             <!-- Menu Item Profile -->
             <li>
                 <a
-                    href="profile.php"
+                    href="/profile"
                     @click="selected = (selected === 'Profile' ? '':'Profile')"
                     class="menu-item group"
                     :class=" (selected === 'Profile' ||page === 'Profile') ? 'menu-item-active' : 'menu-item-inactive'">
@@ -85,7 +85,7 @@
             </li>
             <!-- Menu Item Profile -->
 
-            <!-- Menu Item Management -->
+            <!-- Menu Item Management User -->
             <li>
                 <a
                     href="#"
@@ -139,10 +139,91 @@
                         class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
                         <li>
                             <a
-                                href="infant.php"
+                                href="/infant"
                                 class="menu-dropdown-item group"
                                 :class="page === 'InfantManager' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
                                 Infantes
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/user"
+                                class="menu-dropdown-item group"
+                                :class="page === 'UserManager' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Usuarios
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/group-user"
+                                class="menu-dropdown-item group"
+                                :class="page === 'GroupUser' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Grupos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Dropdown Menu End -->
+            </li>
+            <!-- Menu Item Management User -->
+
+            <!-- Menu Item Inventory -->
+            <li>
+                <a
+                    href="#"
+                    @click.prevent="selected = (selected === 'Inventory' ? '':'Inventory')"
+                    class="menu-item group"
+                    :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'UserManager' || page === 'GroupUser') ? 'menu-item-active' : 'menu-item-inactive'">
+                    <svg
+                        :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'UserManager' || page === 'GroupUser') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M21 16V8a1 1 0 0 0-.553-.894l-8-4a1 1 0 0 0-.894 0l-8 4A1 1 0 0 0 3 8v8a1 1 0 0 0 .553.894l8 4a1 1 0 0 0 .894 0l8-4A1 1 0 0 0 21 16Zm-9-9.382L17.764 8 12 10.618 6.236 8 12 6.618ZM5 9.382l6 3v6.236l-6-3V9.382Zm8 9.236v-6.236l6-3v6.236l-6 3Z"
+                            fill="" />
+                    </svg>
+
+                    <span
+                        class="menu-item-text"
+                        :class="sidebarToggle ? 'lg:hidden' : ''">
+                        Inventario
+                    </span>
+
+                    <svg
+                        class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                        :class="[(selected === 'Inventory') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585"
+                            stroke=""
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <!-- Dropdown Menu Start -->
+                <div
+                    class="overflow-hidden transform translate"
+                    :class="(selected === 'Inventory') ? 'block' :'hidden'">
+                    <ul
+                        :class="sidebarToggle ? 'lg:hidden' : 'flex'"
+                        class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+                        <li>
+                            <a
+                                href="/products"
+                                class="menu-dropdown-item group"
+                                :class="page === 'ProductsList' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Productos
                             </a>
                         </li>
                         <li>
@@ -165,7 +246,7 @@
                 </div>
                 <!-- Dropdown Menu End -->
             </li>
-            <!-- Menu Item Management -->
+            <!-- Menu Item Inventory -->
 
             <!-- Menu Item Pages -->
             <li>
@@ -173,9 +254,9 @@
                     href="#"
                     @click.prevent="selected = (selected === 'Pages' ? '':'Pages')"
                     class="menu-item group"
-                    :class="(selected === 'Pages') || (page === 'Activities' || page === 'pricingTables' || page === 'blank' || page === 'page404' || page === 'page500' || page === 'page503' || page === 'success' || page === 'faq' || page === 'comingSoon' || page === 'maintenance') ? 'menu-item-active' : 'menu-item-inactive'">
+                    :class="(selected === 'Pages') || (page === 'Activities' || page === 'AddActivity') ? 'menu-item-active' : 'menu-item-inactive'">
                     <svg
-                        :class="(selected === 'Pages') || (page === 'Activities' || page === 'pricingTables' || page === 'blank' || page === 'page404' || page === 'page500' || page === 'page503' || page === 'success' || page === 'faq' || page === 'comingSoon' || page === 'maintenance') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                        :class="(selected === 'Pages') || (page === 'Activities' || page === 'AddActivity') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -220,7 +301,7 @@
                         class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
                         <li>
                             <a
-                                href="add-activity.php"
+                                href="/add-activity"
                                 class="menu-dropdown-item group"
                                 :class="page === 'AddActivity' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
                                 Agregar
@@ -228,7 +309,7 @@
                         </li>
                         <li>
                             <a
-                                href="activity.php"
+                                href="/activity"
                                 class="menu-dropdown-item group"
                                 :class="page === 'Activity' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
                                 Asignar a infante
@@ -243,7 +324,7 @@
             <!-- Menu Item Infant -->
             <li>
                 <a
-                    href="infant-report.php"
+                    href="/infant-report"
                     @click="selected = (selected === 'Infant' ? '':'Infant')"
                     class="menu-item group"
                     :class=" (selected === 'Infant' ||page === 'Infant') ? 'menu-item-active' : 'menu-item-inactive'">
