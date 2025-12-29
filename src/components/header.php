@@ -53,4 +53,10 @@ if (!empty($currentPageData['data'])) {
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark bg-gray-900': darkMode === true}">
 
-    <?php $user = current_user(); ?>
+    <?php
+    if (function_exists('current_user') && isset($db)) {
+        $user = current_user();
+    } else {
+        $user = null;
+    }
+    ?>

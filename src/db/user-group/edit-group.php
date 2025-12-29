@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('nameGroup', 'levelGroup', 'statusGroup');
     validate_fields($req_fields);
@@ -18,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $session->msg('d', "No se pudo actualizar el grupo.");
         }
-        redirect('/src/pages/group-user.php', false);
+        redirect('/group-user', false);
     } else {
         $session->msg('d', $errors);
-        redirect('/src/pages/group-user.php', false);
+        redirect('/group-user', false);
     }
 }

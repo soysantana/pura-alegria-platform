@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $session->msg('d', 'No se pudo asignar la cuidadora. Por favor, inténtalo nuevamente.');
         }
-        redirect('/src/pages/home.php', false);
+        redirect('/home', false);
     } else {
         $session->msg("d", $errors);
-        redirect('/src/pages/home.php', false);
+        redirect('/home', false);
     }
 }

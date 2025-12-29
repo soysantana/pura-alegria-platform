@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('fName', 'username', 'password');
     validate_fields($req_fields);
@@ -24,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($db->query($sql)) {
             $session->msg('s', "El usuario <strong>" . htmlentities($_POST['username']) . "</strong> ha sido registrado y está pendiente de validación por el administrador.");
-            redirect('/src/pages/signin.php', false);
+            redirect('/signin', false);
         } else {
             $session->msg('d', 'No se pudo registrar el usuario. Por favor, verifica los datos e inténtalo nuevamente.');
-            redirect('/src/pages/signup.php', false);
+            redirect('/signup', false);
         }
     } else {
         $session->msg("d", $errors);
-        redirect('/src/pages/signup.php', false);
+        redirect('/signup', false);
     }
 }

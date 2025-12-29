@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(2);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('assignInfant', 'assignActivity');
     validate_fields($req_fields);
@@ -27,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $session->msg('d', 'No se pudo asignar la actividad al infante. Por favor, inténtalo nuevamente.');
         }
-        redirect('/src/pages/activity.php', false);
+        redirect('/activity', false);
     } else {
         $session->msg("d", $errors);
-        redirect('/src/pages/activity.php', false);
+        redirect('/activity', false);
     }
 }

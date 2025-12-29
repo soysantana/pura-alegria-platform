@@ -18,7 +18,7 @@ require_once('../config/load.php');
     <div class="flex flex-col flex-1 w-full lg:w-1/2">
       <div class="w-full max-w-md pt-5 mx-auto sm:py-10">
         <a
-          href="home.php"
+          href="home"
           class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
           <svg
             class="stroke-current"
@@ -60,7 +60,7 @@ require_once('../config/load.php');
                 class="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">Or</span>
             </div>
           </div>
-          <form action="../db/user/add-user.php" method="POST">
+          <form action="/src/db/user/add-user.php" method="POST">
             <div class="space-y-5">
               <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <!-- First Name -->
@@ -211,7 +211,7 @@ require_once('../config/load.php');
               class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
               ¿Ya tienes una cuenta?
               <a
-                href="signin.php"
+                href="/signin"
                 class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Iniciar Sesión</a>
             </p>
           </div>
@@ -225,7 +225,7 @@ require_once('../config/load.php');
         <?php include_once '../includes/common-grid-shape.php'; ?>
         <div class="flex flex-col items-center max-w-xs">
           <a href="index.html" class="block mb-4">
-            <img src="../images/logo/auth-logo.svg" alt="Logo" />
+            <img src="/src/images/logo/auth-logo.svg" alt="Logo" />
           </a>
           <p class="text-center text-gray-400 dark:text-white/60">
             Creciendo, jugando y aprendiendo con amor cada día.

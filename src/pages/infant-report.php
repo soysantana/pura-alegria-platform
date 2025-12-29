@@ -39,9 +39,14 @@ page_require_level(3);
 
                 <?php echo display_msg($msg); ?>
 
-                <?php include_once '../includes/infant/card-infant.php'; ?>
-                <?php include_once '../includes/infant/table-infant-report.php'; ?>
-
+                <?php $infants = find_my_infants_by_tutors(); ?>
+                <?php foreach ($infants as $infant): ?>
+                    <?php
+                    include '../includes/infant/card-infant.php';
+                    $logs = find_infant_logs_by_tutor($infant['infant_id']);
+                    include '../includes/infant/table-infant-report.php';
+                    ?>
+                <?php endforeach; ?>
             </div>
         </main>
         <!-- ===== Main Content End ===== -->

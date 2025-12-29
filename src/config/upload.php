@@ -89,3 +89,42 @@ function upload_image($file, $subfolder = '', $maxWidth = 1920, $jpegQuality = 8
     }
     return ['fileName' => $imagePath];
 }
+
+function upload_pdf_base64($pdfBase64, $receiptNo, $subfolder = '')
+{
+    if (!$pdfBase64) {
+        return ['error' => 'No se recibió el PDF'];
+    }
+
+    // Decodificar Base64
+    $pdfDecoded = base64_decode($pdfBase64);
+    if (!$pdfDecoded) {
+        return ['error' => 'El contenido Base64 no es válido'];
+    }
+
+    // Usar receiptNo como nombre del PDF
+    $newFileName = $receiptNo . '.pdf';
+
+    $baseDir = __DIR__ . '/../uploads/';
+
+    if ($subfolder) {
+        $folderPath = rtrim($baseDir, '/\\') . '/' . trim($subfolder, '/\\') . '/';
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+        $destPath = $folderPath . $newFileName;
+        $pdfPath = $subfolder . '/' . $newFileName;
+    } else {
+        $destPath = $baseDir . $newFileName;
+        $pdfPath = $newFileName;
+    }
+
+    // Guardar PDF en el servidor
+    $saved = file_put_contents($destPath, $pdfDecoded);
+
+    if (!$saved) {
+        return ['error' => 'No se pudo guardar el PDF'];
+    }
+
+    return ['fileName' => $pdfPath];
+}

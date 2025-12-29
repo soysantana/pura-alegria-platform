@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('userLevel', 'statusUser');
     validate_fields($req_fields);
@@ -27,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $session->msg('d', "No se pudo actualizar el usuario.");
         }
-        redirect('/src/pages/user.php', false);
+        redirect('/user', false);
     } else {
         $session->msg('d', $errors);
-        redirect('/src/pages/user.php', false);
+        redirect('/user', false);
     }
 }

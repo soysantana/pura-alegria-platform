@@ -7,10 +7,10 @@
         class="flex items-center gap-2 pt-8 sidebar-header pb-7">
         <a href="#">
             <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
-                <img class="dark:hidden" src="../images/logo/logo.svg" alt="Logo" />
+                <img class="dark:hidden" src="/src/images/logo/logo.svg" alt="Logo" />
                 <img
                     class="hidden dark:block"
-                    src="../images/logo/logo-dark.svg"
+                    src="/src/images/logo/logo-dark.svg"
                     alt="Logo" />
             </span>
 

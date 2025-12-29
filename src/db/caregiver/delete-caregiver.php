@@ -10,5 +10,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $session->msg("d", "No encontrado");
     }
-    redirect('/src/pages/home.php', false);
+    redirect('/home', false);
 }
