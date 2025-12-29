@@ -1,2 +1,14 @@
 # Node modules
 node_modules/
+
+# .github
+.github/
+
+# vscode settings
+.vscode/
+
+# .prettierrc
+.prettierrc
+
+# bluid
+build/
