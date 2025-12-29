@@ -6,10 +6,10 @@ try {
 
     if (!$session->isUserLoggedIn(true)) {
         // Usuario NO logueado
-        redirect('src/pages/signin.php');
+        redirect('/signin');
     } else {
         // Usuario logueado
-        redirect('src/pages/home.php');
+        redirect('/home.');
     }
 } catch (Throwable $e) {
     // Maneja cualquier error que ocurra

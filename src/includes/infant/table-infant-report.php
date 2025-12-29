@@ -41,36 +41,44 @@
         </tr>
       </thead>
       <!-- table header end -->
-      <?php $logs = find_my_infants_by_tutors(); ?>
       <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-        <?php foreach ($logs as $log): ?>
+        <?php if (!empty($logs)): ?>
+          <?php foreach ($logs as $log): ?>
+            <tr>
+              <td class="py-3">
+                <div class="flex items-center">
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                    <?php echo remove_junk(ucfirst($log['caregiver_name'])); ?>
+                  </p>
+                </div>
+              </td>
+              <td class="py-3">
+                <div class="flex items-center">
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                    <?php echo remove_junk(ucfirst($log['activity_name'])); ?>
+                  </p>
+                </div>
+              </td>
+              <td class="py-3">
+                <div class="flex items-center">
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                    <?php echo remove_junk(date('d/m/Y h:i A', strtotime($log['created_at']))); ?>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
           <tr>
-            <td class="py-3">
-              <div class="flex items-center">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                  <?php echo remove_junk(ucfirst($log['caregiver_name'])); ?>
-                </p>
-              </div>
-            </td>
-            <td class="py-3">
-              <div class="flex items-center">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                  <?php echo remove_junk(ucfirst($log['activity_name'])); ?>
-                </p>
-              </div>
-            </td>
-            <td class="py-3">
-              <div class="flex items-center">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                  <?php echo remove_junk(date('d/m/Y h:i A', strtotime($log['created_at']))); ?>
-                </p>
-              </div>
+            <td colspan="3" class="py-4 text-center text-gray-400">
+              No hay actividades registradas
             </td>
           </tr>
-          <!-- table item -->
-        <?php endforeach; ?>
+        <?php endif; ?>
+        <!-- table item -->
         <!-- table body end -->
       </tbody>
     </table>
   </div>
 </div>
+<div class="mt-6"></div>

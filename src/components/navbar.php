@@ -60,11 +60,11 @@
       <a href="#" class="lg:hidden">
         <img
           class="dark:hidden"
-          src="../images/logo/logo.svg"
+          src="/src/images/logo/logo.svg"
           alt="Logo" />
         <img
           class="hidden dark:block"
-          src="../images/logo/logo-dark.svg"
+          src="/src/images/logo/logo-dark.svg"
           alt="Logo" />
       </a>
 
@@ -132,6 +132,7 @@
         <!-- Dark Mode Toggler -->
 
         <!-- Notification Menu Area -->
+        <?php include_once 'navbar/notification.php'; ?>
         <!-- Notification Menu Area -->
 
       </div>

@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Infantes';
+$page_title = 'Grupo de Usuarios';
 require_once('../config/load.php');
 page_require_level(1);
 ?>

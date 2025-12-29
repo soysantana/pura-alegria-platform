@@ -2,7 +2,7 @@
 $page_title = 'Inicio';
 require_once('../config/load.php');
 if (!$session->isUserLoggedIn(true)) {
-  redirect("signin.php", false);
+  redirect("signin", false);
 }
 ?>
 
@@ -10,12 +10,12 @@ if (!$session->isUserLoggedIn(true)) {
 $current_user = current_user();
 
 if (isset($current_user['user_level']) && $current_user['user_level'] == 2) {
-  header("Location: /src/pages/add-activity.php");
+  header("Location: add-activity");
   exit();
 }
 
 if (isset($current_user['user_level']) && $current_user['user_level'] == 3) {
-  header("Location: /src/pages/infant-report.php");
+  header("Location: infant-report");
   exit();
 }
 
@@ -55,7 +55,7 @@ if (isset($current_user['user_level']) && $current_user['user_level'] == 3) {
           <div class="col-span-12 space-y-6 xl:col-span-8">
             <div class="col-span-12">
               <!-- Metric Group Two -->
-              <?php include_once '../includes/metric-group/metric-group.php'; ?>
+              <?php /*desativado include_once '../includes/metric-group/metric-group.php';*/ ?>
               <!-- Metric Group Two -->
             </div>
           </div>

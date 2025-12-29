@@ -73,11 +73,61 @@ return [
 
     "products.php" => [
         "title"  => "ProductsList",
-        "modals" => []
+        "modals" => ["Delete"],
+        "data" => ['deleteId' => '']
     ],
 
     "products-add.php" => [
         "title"  => "ProductsList",
         "modals" => []
-    ]
+    ],
+
+    "products-edit.php" => [
+        "title"  => "ProductsList",
+        "modals" => []
+    ],
+
+    "products-category.php" => [
+        "title"  => "Category",
+        "modals" => ["AddCategory", "EditCategory", "Delete"],
+        "data" => [
+            'editCategoryId' => '',
+            'editCategoryName' => '',
+            'editCategoryType' => '',
+            'deleteId' => ''
+        ]
+    ],
+    "item-infant.php" => [
+        "title"  => "ItemInfant",
+        "modals" => ["EditItem", "Delete"],
+        "data" => [
+            'deleteId' => ''
+        ]
+    ],
+    "item-infant-add.php" => [
+        "title"  => "ItemInfant",
+        "modals" => []
+    ],
+    "item-infant-edit.php" => [
+        "title"  => "ItemInfant",
+        "modals" => ['Delete'],
+        "data" => [
+            'deleteId' => ''
+        ]
+    ],
+    "invoice-add.php" => [
+        "title"  => "CreateInvoice",
+        "modals" => ["Invoice"],
+        "data" => [
+            'pdfUrl' => ''
+        ]
+    ],
+    "invoices.php" => [
+        "title"  => "InvoiceHistory",
+        "modals" => ["Delete"],
+        "data" => [
+            'pdfUrl' => '',
+            'deleteId' => ''
+        ]
+    ],
 ];

@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(2);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('activityName', 'activityCategory');
     validate_fields($req_fields);
@@ -18,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $session->msg('d', "No se pudo actualizar la actividad.");
         }
-        redirect('../../pages/add-activity.php', false);
+        redirect('/add-activity', false);
     } else {
         $session->msg('d', $errors);
-        redirect('../../pages/add-activity.php', false);
+        redirect('/add-activity', false);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Productos';
+$page_title = 'Agregar Producto';
 require_once('../config/load.php');
 page_require_level(2);
 ?>
@@ -39,7 +39,7 @@ page_require_level(2);
 
         <?php echo display_msg($msg); ?>
 
-        <?php include_once '../includes/product/add.php'; ?>
+        <?php include_once '../includes/product/product-add.php'; ?>
 
       </div>
     </main>

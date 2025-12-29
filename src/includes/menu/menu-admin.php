@@ -167,87 +167,6 @@
             </li>
             <!-- Menu Item Management User -->
 
-            <!-- Menu Item Inventory -->
-            <li>
-                <a
-                    href="#"
-                    @click.prevent="selected = (selected === 'Inventory' ? '':'Inventory')"
-                    class="menu-item group"
-                    :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'UserManager' || page === 'GroupUser') ? 'menu-item-active' : 'menu-item-inactive'">
-                    <svg
-                        :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'UserManager' || page === 'GroupUser') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M21 16V8a1 1 0 0 0-.553-.894l-8-4a1 1 0 0 0-.894 0l-8 4A1 1 0 0 0 3 8v8a1 1 0 0 0 .553.894l8 4a1 1 0 0 0 .894 0l8-4A1 1 0 0 0 21 16Zm-9-9.382L17.764 8 12 10.618 6.236 8 12 6.618ZM5 9.382l6 3v6.236l-6-3V9.382Zm8 9.236v-6.236l6-3v6.236l-6 3Z"
-                            fill="" />
-                    </svg>
-
-                    <span
-                        class="menu-item-text"
-                        :class="sidebarToggle ? 'lg:hidden' : ''">
-                        Inventario
-                    </span>
-
-                    <svg
-                        class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
-                        :class="[(selected === 'Inventory') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585"
-                            stroke=""
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-
-                <!-- Dropdown Menu Start -->
-                <div
-                    class="overflow-hidden transform translate"
-                    :class="(selected === 'Inventory') ? 'block' :'hidden'">
-                    <ul
-                        :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                        class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
-                        <li>
-                            <a
-                                href="/products"
-                                class="menu-dropdown-item group"
-                                :class="page === 'ProductsList' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
-                                Productos
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="user.php"
-                                class="menu-dropdown-item group"
-                                :class="page === 'UserManager' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
-                                Usuarios
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="group-user.php"
-                                class="menu-dropdown-item group"
-                                :class="page === 'GroupUser' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
-                                Grupos
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Dropdown Menu End -->
-            </li>
-            <!-- Menu Item Inventory -->
-
             <!-- Menu Item Pages -->
             <li>
                 <a
@@ -379,6 +298,164 @@
         </h3>
 
         <ul class="flex flex-col gap-4 mb-6">
+            <!-- Menu Item Inventory -->
+            <li>
+                <a
+                    href="#"
+                    @click.prevent="selected = (selected === 'Inventory' ? '':'Inventory')"
+                    class="menu-item group"
+                    :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'Category' || page === 'ItemInfant') ? 'menu-item-active' : 'menu-item-inactive'">
+                    <svg
+                        :class="(selected === 'Inventory') || (page === 'ProductsList' || page === 'Category' || page === 'ItemInfant') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M21 16V8a1 1 0 0 0-.553-.894l-8-4a1 1 0 0 0-.894 0l-8 4A1 1 0 0 0 3 8v8a1 1 0 0 0 .553.894l8 4a1 1 0 0 0 .894 0l8-4A1 1 0 0 0 21 16Zm-9-9.382L17.764 8 12 10.618 6.236 8 12 6.618ZM5 9.382l6 3v6.236l-6-3V9.382Zm8 9.236v-6.236l6-3v6.236l-6 3Z"
+                            fill="" />
+                    </svg>
+
+                    <span
+                        class="menu-item-text"
+                        :class="sidebarToggle ? 'lg:hidden' : ''">
+                        Inventario
+                    </span>
+
+                    <svg
+                        class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                        :class="[(selected === 'Inventory') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585"
+                            stroke=""
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <!-- Dropdown Menu Start -->
+                <div
+                    class="overflow-hidden transform translate"
+                    :class="(selected === 'Inventory') ? 'block' :'hidden'">
+                    <ul
+                        :class="sidebarToggle ? 'lg:hidden' : 'flex'"
+                        class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+                        <li>
+                            <a
+                                href="/products"
+                                class="menu-dropdown-item group"
+                                :class="page === 'ProductsList' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Productos
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/products-category"
+                                class="menu-dropdown-item group"
+                                :class="page === 'Category' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Categoria
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/item-infant"
+                                class="menu-dropdown-item group"
+                                :class="page === 'ItemInfant' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Infante
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Dropdown Menu End -->
+            </li>
+            <!-- Menu Item Inventory -->
+
+            <!-- Menu Item Invoice -->
+            <li>
+                <a
+                    href="#"
+                    @click.prevent="selected = (selected === 'Invoice' ? '':'Invoice')"
+                    class="menu-item group"
+                    :class="(selected === 'Invoice') || (page === 'CreateInvoice' || page === 'InvoiceHistory') ? 'menu-item-active' : 'menu-item-inactive'">
+                    <svg
+                        :class="(selected === 'Invoice') || (page === 'CreateInvoice' || page === 'InvoiceHistory') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 2H3v20l3-2 3 2 3-2 3 2 3-2 3 2V2Z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none" />
+                        <path
+                            d="M8 8h8M8 12h8M8 16h8"
+                            stroke="currentColor"
+                            stroke-width="2" />
+                    </svg>
+
+                    <span
+                        class="menu-item-text"
+                        :class="sidebarToggle ? 'lg:hidden' : ''">
+                        Facturación
+                    </span>
+
+                    <svg
+                        class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                        :class="[(selected === 'Invoice') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585"
+                            stroke=""
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <!-- Dropdown Menu Start -->
+                <div
+                    class="overflow-hidden transform translate"
+                    :class="(selected === 'Invoice') ? 'block' :'hidden'">
+                    <ul
+                        :class="sidebarToggle ? 'lg:hidden' : 'flex'"
+                        class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+                        <li>
+                            <a
+                                href="/invoice-add"
+                                class="menu-dropdown-item group"
+                                :class="page === 'CreateInvoice' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Crear factura
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/invoices"
+                                class="menu-dropdown-item group"
+                                :class="page === 'InvoiceHistory' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                                Historial de facturas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Dropdown Menu End -->
+            </li>
+            <!-- Menu Item Invoice -->
+
             <!-- Menu Item Authentication -->
             <li>
                 <a
@@ -432,7 +509,7 @@
                         class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
                         <li>
                             <a
-                                href="signin.php"
+                                href="/signin"
                                 class="menu-dropdown-item group"
                                 :class="page === 'signin' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
                                 Iniciar Sesión
@@ -440,7 +517,7 @@
                         </li>
                         <li>
                             <a
-                                href="signup.php"
+                                href="/signup"
                                 class="menu-dropdown-item group"
                                 :class="page === 'signup' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
                                 Registrarse

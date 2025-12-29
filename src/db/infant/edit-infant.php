@@ -1,6 +1,6 @@
 <?php
 require_once('../../config/load.php');
-
+page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('firstName', 'infanteTutor');
     validate_fields($req_fields);
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadResult = upload_image($_FILES['picture'], 'infant');
             if (isset($uploadResult['error'])) {
                 $session->msg('d', $uploadResult['error']);
-                redirect('/src/pages/infant.php', false);
+                redirect('/infant', false);
             }
             $picture = $uploadResult['fileName'];
         }
@@ -47,13 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $db->query($sql);
         if ($result && $db->affected_rows() === 1) {
             $session->msg('s', "Hola el infante ha sido actualizada.");
-            redirect('/src/pages/infant.php', false);
+            redirect('/infant', false);
         } else {
             $session->msg('d', " Lo siento tu actualización falló.");
-            redirect('/src/pages/infant.php', false);
+            redirect('/infant', false);
         }
     } else {
         $session->msg("d", $errors);
-        redirect('/src/pages/infant.php', false);
+        redirect('/infant', false);
     }
 }

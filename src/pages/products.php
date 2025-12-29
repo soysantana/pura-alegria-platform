@@ -1,7 +1,7 @@
 <?php
 $page_title = 'Productos';
 require_once('../config/load.php');
-page_require_level(2);
+page_require_level(1);
 ?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
@@ -39,7 +39,11 @@ page_require_level(2);
 
         <?php echo display_msg($msg); ?>
 
-        <?php include_once '../includes/product/table.php'; ?>
+        <!-- Overview -->
+        <?php include_once '../includes/product/overview.php'; ?>
+
+        <!-- Table products -->
+        <?php include_once '../includes/product/table-product.php'; ?>
 
       </div>
     </main>
@@ -50,6 +54,7 @@ page_require_level(2);
 <!-- ===== Page Wrapper End ===== -->
 
 <!-- BEGIN MODAL -->
+<?php include_once '../includes/confirm-delete-modal.php'; ?>
 <!-- END MODAL -->
 
 <?php include_once '../components/footer.php'; ?>

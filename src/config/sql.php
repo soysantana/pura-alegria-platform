@@ -70,6 +70,22 @@ function delete_by_id($table, $id)
   return false;
 }
 /*--------------------------------------------------------------*/
+/* Function for Delete data from table by id
+/*--------------------------------------------------------------*/
+function delete_by_id_v2($table, $id, $column)
+{
+  global $db;
+  if (tableExists($table)) {
+    $table = $db->escape($table);
+    $id = $db->escape($id);
+    $column = $db->escape($column);
+    $sql = "DELETE FROM {$table} WHERE {$column} = '{$id}'";
+    $db->query($sql);
+    return ($db->affected_rows() > 0) ? true : false;
+  }
+  return false;
+}
+/*--------------------------------------------------------------*/
 /* Function for Count id  By table name
 /*--------------------------------------------------------------*/
 
@@ -154,7 +170,7 @@ function find_all_user()
 function find_all_tutor()
 {
   global $db;
-  $sql  = "SELECT u.id, u.first_name, u.user_level,";
+  $sql  = "SELECT u.id, u.first_name, u.last_name, u.user_level,";
   $sql .= "g.group_name ";
   $sql .= "FROM users u ";
   $sql .= "LEFT JOIN user_groups g ON g.group_level = u.user_level ";
@@ -163,6 +179,16 @@ function find_all_tutor()
   $result = find_by_sql($sql);
   return $result;
 }
+function find_all_infants()
+{
+  global $db;
+  $sql = "SELECT id, first_name, last_name, tutor_id ";
+  $sql .= "FROM infants ";
+  $sql .= "ORDER BY first_name ASC";
+  $result = find_by_sql($sql);
+  return $result;
+}
+
 /*--------------------------------------------------------------*/
 /* Find all caregivers by
  /* joining users table and user groups table
@@ -220,23 +246,36 @@ function find_my_infants()
 /* Get all infants logs assigned 
  /* to the currently logged-in tutor
  /*--------------------------------------------------------------*/
-function find_my_infants_by_tutors()
+function find_infant_logs_by_tutor($infant_id)
 {
   global $db;
-  $tutor_id = (int)$_SESSION['user_id'];
+  $infant_id = (int)$infant_id;
   $sql  = "SELECT ";
-  $sql .= "l.id AS activity_id, ";
-  $sql .= "i.first_name AS infant_name, i.picture AS infant_picture, ";
   $sql .= "u.first_name AS caregiver_name, ";
   $sql .= "a.name AS activity_name, ";
   $sql .= "l.notes, ";
   $sql .= "l.created_at ";
   $sql .= "FROM infant_activity_logs l ";
-  $sql .= "INNER JOIN infants i ON l.infant_id = i.id ";
   $sql .= "INNER JOIN users u ON l.caregiver_id = u.id ";
   $sql .= "INNER JOIN activities a ON l.activity_id = a.id ";
-  $sql .= "WHERE i.tutor_id = {$tutor_id} ";
+  $sql .= "WHERE l.infant_id = {$infant_id} ";
   $sql .= "ORDER BY l.created_at DESC";
+  return find_by_sql($sql);
+}
+/*--------------------------------------------------------------*/
+/* Get infant assigned for tutor
+ /* to the currently logged-in tutor
+ /*--------------------------------------------------------------*/
+function find_my_infants_by_tutors()
+{
+  global $db;
+  $tutor_id = (int)$_SESSION['user_id'];
+  $sql  = "SELECT ";
+  $sql .= "i.id AS infant_id, i.first_name AS infant_name, ";
+  $sql .= "i.picture AS infant_picture ";
+  $sql .= "FROM infants i ";
+  $sql .= "WHERE i.tutor_id = {$tutor_id} ";
+  $sql .= "ORDER BY i.first_name ASC";
   return find_by_sql($sql);
 }
 /*------------------------------------------------------------------*/
@@ -300,7 +339,7 @@ function page_require_level($require_level)
   global $session;
   $current_user = current_user();
   // Validación de sesión
-  if (!$session->isUserLoggedIn(true)) {
+  if (!$session->isUserLoggedIn()) {
     $session->msg('d', 'Por favor Iniciar sesión...');
     redirect('/index.php', false);
   }
@@ -321,6 +360,6 @@ function page_require_level($require_level)
     return true;
   } else {
     $session->msg("d", "¡Lo siento! No tienes permiso para ver la página.");
-    redirect('/src/pages/home.php', false);
+    redirect('/home', false);
   }
 }

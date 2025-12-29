@@ -2,7 +2,7 @@
 $page_title = 'Iniciar Sesión';
 require_once('../config/load.php');
 if ($session->isUserLoggedIn(true)) {
-  redirect('/src/pages/home.php', false);
+  redirect('/home', false);
 }
 ?>
 <!-- ===== Header Start ===== -->
@@ -21,7 +21,7 @@ if ($session->isUserLoggedIn(true)) {
     <div class="flex flex-col flex-1 w-full lg:w-1/2">
       <div class="w-full max-w-md pt-10 mx-auto">
         <a
-          href="home.php"
+          href="/home"
           class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
           <svg
             class="stroke-current"
@@ -179,7 +179,7 @@ if ($session->isUserLoggedIn(true)) {
                 class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
                 No tienes una cuenta?
                 <a
-                  href="signup.php"
+                  href="signup"
                   class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Registrarse</a>
               </p>
             </div>
@@ -195,7 +195,7 @@ if ($session->isUserLoggedIn(true)) {
         <?php include_once '../includes/common-grid-shape.php'; ?>
         <div class="flex flex-col items-center max-w-xs">
           <a href="index.html" class="block mb-4">
-            <img src="../images/logo/auth-logo.svg" alt="Logo" />
+            <img src="/src/images/logo/auth-logo.svg" alt="Logo" />
           </a>
           <p class="text-center text-gray-400 dark:text-white/60">
             Creciendo, jugando y aprendiendo con amor cada día.

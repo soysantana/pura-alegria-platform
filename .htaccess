@@ -8,5 +8,17 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Reescribir /nombre -> /pages/nombre.php
+
+# Paginas del sistema
+RewriteCond %{DOCUMENT_ROOT}/src/pages/$1.php -f
 RewriteRule ^([A-Za-z0-9\-_]+)/?$ src/pages/$1.php [L]
+
+# Archivos públicos
+RewriteCond %{DOCUMENT_ROOT}/public/$1.php -f
+RewriteRule ^([A-Za-z0-9\-_]+)/?$ public/$1.php [L]
+
+# Fallback opcional 404
+RewriteRule ^ 404.php [L]
+
+# /inventory/nombre  →  src/pages/inventory/nombre.php
+# Desativado por el momento RewriteRule ^inventory/([A-Za-z0-9\-_]+)/?$ src/pages/inventory/$1.php [L]

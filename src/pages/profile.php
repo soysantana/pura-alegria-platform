@@ -52,7 +52,7 @@ page_require_level(3);
                 class="flex flex-col items-center w-full gap-6 xl:flex-row">
                 <div
                   class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
-                  <img src="../uploads/<?php echo remove_junk($user['picture']); ?>" alt="user" />
+                  <img src="/src/uploads/<?php echo remove_junk($user['picture']); ?>" alt="user" />
                 </div>
                 <div class="order-3 xl:order-2">
                   <h4

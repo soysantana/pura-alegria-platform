@@ -1,6 +1,8 @@
 <?php
 require_once(LIB_PATH_INC . DS . "config.php");
 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 class MySqli_DB
 {
 
@@ -17,15 +19,21 @@ class MySqli_DB
 /*--------------------------------------------------------------*/
   public function db_connect()
   {
-    $this->con = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
-    if (!$this->con) {
-      die(" Database connection failed:" . mysqli_connect_error());
-    } else {
-      $select_db = $this->con->select_db(DB_NAME);
-      if (!$select_db) {
-        die("Failed to Select Database" . mysqli_connect_error());
-      }
+    try {
+      $this->con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+      $this->con->query("SET time_zone = '-04:00'");
+    } catch (mysqli_sql_exception $e) {
+      $this->serviceUnavailable();
     }
+  }
+  /*--------------------------------------------------------------*/
+  /* Function to handle database service unavailability
+/*--------------------------------------------------------------*/
+  private function serviceUnavailable()
+  {
+    http_response_code(503);
+    header("Location: /503");
+    exit;
   }
   /*--------------------------------------------------------------*/
   /* Function for Close database connection

@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int)$_POST['deleteId'];
 
@@ -10,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $session->msg("d", "No encontrado");
     }
-    redirect('/src/pages/user.php', false);
+    redirect('/user', false);
 }

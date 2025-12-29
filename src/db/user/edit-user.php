@@ -1,5 +1,6 @@
 <?php
 require_once('../../config/load.php');
+page_require_level(3);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('firstName', 'lastName');
     validate_fields($req_fields);
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadResult = upload_image($_FILES['picture'], 'user');
             if (isset($uploadResult['error'])) {
                 $session->msg('d', $uploadResult['error']);
-                redirect('../../pages/profile.php', false);
+                redirect('/profile', false);
             }
             $picture = $uploadResult['fileName'];
         }
@@ -42,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $db->query($sql);
         if ($result && $db->affected_rows() === 1) {
             $session->msg('s', "Hola " . htmlentities($firstName) . ", tu cuenta ha sido actualizada.");
-            redirect('../../pages/profile.php', false);
+            redirect('/profile', false);
         } else {
             $session->msg('d', " Lo siento " . htmlentities($firstName) . ", tu actualización falló.");
-            redirect('../../pages/profile.php', false);
+            redirect('/profile', false);
         }
     } else {
         $session->msg("d", $errors);
-        redirect('../../pages/profile.php', false);
+        redirect('/profile', false);
     }
 }

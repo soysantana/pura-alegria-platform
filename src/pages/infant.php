@@ -1,7 +1,7 @@
 <?php
 $page_title = 'Infantes';
 require_once('../config/load.php');
-page_require_level(2);
+page_require_level(1);
 ?>
 <!-- ===== Header Start ===== -->
 <?php include_once '../components/header.php'; ?>
