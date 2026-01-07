@@ -7,6 +7,7 @@
         name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/build/style.css">
     <link rel="icon" href="/src/images/logo/logo.svg" type="image/svg+xml">
     <title>
