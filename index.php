@@ -9,10 +9,10 @@ try {
         redirect('/signin');
     } else {
         // Usuario logueado
-        redirect('/home.');
+        redirect('/home');
     }
 } catch (Throwable $e) {
     // Maneja cualquier error que ocurra
-    header('Location: public/503.php');
+    redirect('/503');
     exit;
 }
