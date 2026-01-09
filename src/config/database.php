@@ -51,17 +51,26 @@ class MySqli_DB
 /*--------------------------------------------------------------*/
   public function query($sql)
   {
-
-    if (trim($sql != "")) {
-      $this->query_id = $this->con->query($sql);
+    if (trim($sql) == "") {
+      return false;
     }
-    if (!$this->query_id)
+    try {
+      $this->query_id = $this->con->query($sql);
+      return $this->query_id;
+    } catch (mysqli_sql_exception $e) {
+      // error message
+      $errorMsg = "[SQL ERROR]" .
+        " - [Consulta] " . $sql .
+        " - [ERROR MySQL] " . $e->getMessage() .
+        " - [Archivo] " . $e->getFile() .
+        " - [Linea] " . $e->getLine();
+      error_log($errorMsg);
       // only for Develope mode
-      die("Error en esta consulta :<pre> " . $sql . "</pre>");
-    // For production mode
-    //  die("Error on Query");
-
-    return $this->query_id;
+      if (defined('DEVELOPMENT_MODE') && DEVELOPMENT_MODE) {
+        die("<pre>SQL ERROR: " . $errorMsg . "</pre>");
+      }
+      return false;
+    }
   }
 
   /*--------------------------------------------------------------*/

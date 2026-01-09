@@ -1,14 +1,21 @@
-# Node modules
+# Node dependencies
 node_modules/
 
-# .github
+# Build output
+build/
+
+# Environment variables
+.env
+
+# GitHub configuration
 .github/
 
-# vscode settings
+# VS Code settings
 .vscode/
 
-# .prettierrc
+# Prettier configuration
 .prettierrc
 
-# bluid
-build/
+# Logs
+/logs/*
+#!.gitkeep
