@@ -1,4 +1,5 @@
 <?php
+http_response_code(404);
 $page_title = '404 No encontrado';
 require_once(__DIR__ . '/../src/config/load.php');
 ?>
