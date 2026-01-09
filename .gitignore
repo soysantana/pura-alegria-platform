@@ -18,4 +18,8 @@ build/
 
 # Logs
 /logs/*
-#!.gitkeep
+!.gitkeep
+
+# Uploaded files
+src/uploads/*
+!src/uploads/.gitkeep
