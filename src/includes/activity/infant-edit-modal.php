@@ -33,7 +33,7 @@
         Puedes seleccionar un infante diferente y una nueva actividad.
       </p>
     </div>
-    <form class="flex flex-col">
+    <form action="/src/db/infant/edit-infan-activity.php" method="POST" class="flex flex-col">
       <div class="px-2 overflow-y-auto custom-scrollbar">
         <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
           <div>
@@ -41,13 +41,21 @@
               Infante
             </label>
             <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-              <select class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
+              <input type="hidden" id="activityId" name="activityId" x-model="editInfantId">
+              <input type="hidden" id="caregiverId" name="caregiverId" value="<?php echo base64_encode((int)$user['id']); ?>">
+              <select
+                id="assignInfant"
+                name="assignInfant"
+                x-model="editInfantName"
+                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
                 <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400" disabled selected hidden>
                   Seleccione un infante
                 </option>
-                <option value="Juan" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                  Juan
-                </option>
+                <?php foreach ($infants as $inf): ?>
+                  <option value="<?php echo remove_junk($inf['infant_id']); ?>" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                    <?php echo remove_junk(ucfirst($inf['infant_name'])); ?>
+                  </option>
+                <?php endforeach; ?>
               </select>
               <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
                 <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,16 +70,20 @@
               Actividad
             </label>
             <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-              <select class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
+              <select
+                id="assignActivity"
+                name="assignActivity"
+                x-model="editInfantActName"
+                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
                 <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400" disabled selected hidden>
                   Seleccione una actividad
                 </option>
-                <option value="Cambio de pañal" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                  Cambio de pañal
-                </option>
-                <option value="Almuerzo" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                  Almuerzo
-                </option>
+                <?php $activities = find_all('activities'); ?>
+                <?php foreach ($activities as $act): ?>
+                  <option value="<?php echo remove_junk($act['id']); ?>" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                    <?php echo remove_junk(ucfirst($act['name'])); ?>
+                  </option>
+                <?php endforeach; ?>
               </select>
               <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
                 <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +102,7 @@
           Cerrar
         </button>
         <button
-          type="button"
+          type="submit"
           class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
           Guardar cambios
         </button>
