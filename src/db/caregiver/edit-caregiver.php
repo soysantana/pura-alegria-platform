@@ -6,25 +6,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     validate_fields($req_fields);
 
     if (empty($errors)) {
+        $id = (int) base64_decode($_POST['assignId']);
         $caregiver = $db->escape($_POST['caregiver']);
         $infant = $db->escape($_POST['infant']);
 
-        $sql = "INSERT INTO infant_caregivers (
-            infant_id,
-            caregiver_id
-        ) VALUES (
-            '{$infant}',
-            '{$caregiver}'
-        )";
+        $sql = "UPDATE infant_caregivers SET infant_id='{$infant}', caregiver_id='{$caregiver}' WHERE id='{$id}'";
+        $result = $db->query($sql);
 
-        if ($db->query($sql)) {
-            $session->msg('s', "Cuidadora asignada correctamente.");
+        if ($result && $db->affected_rows() === 1) {
+            $session->msg('s', "Asignación actualizada correctamente.");
         } else {
-            $session->msg('d', 'No se pudo asignar la cuidadora. Por favor, inténtalo nuevamente.');
+            $session->msg('d', "No se pudo actualizar la asignación.");
         }
         redirect('/home', false);
     } else {
-        $session->msg("d", $errors);
+        $session->msg('d', $errors);
         redirect('/home', false);
     }
 }

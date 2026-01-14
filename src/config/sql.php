@@ -215,7 +215,9 @@ function find_all_assigned_caregivers()
   $sql  = "SELECT ";
   $sql .= "ic.id AS assign_id, ";
   $sql .= "i.first_name AS infant_name, ";
+  $sql .= "i.id AS infant_id, ";
   $sql .= "u.first_name AS caregiver_name, ";
+  $sql .= "u.id AS caregiver_id, ";
   $sql .= "u.picture AS caregiver_picture ";
   $sql .= "FROM infant_caregivers ic ";
   $sql .= "INNER JOIN users u ON ic.caregiver_id = u.id ";

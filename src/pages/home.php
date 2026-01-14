@@ -82,6 +82,7 @@ if (isset($current_user['user_level']) && $current_user['user_level'] == 3) {
 <!-- BEGIN MODAL -->
 <?php include_once '../includes/infant/infant-add-modal.php'; ?>
 <?php include_once '../includes/caregiver/caregiver-assign-modal.php'; ?>
+<?php include_once '../includes/caregiver/caregiver-edit-modal.php'; ?>
 <?php include_once '../includes/confirm-delete-modal.php'; ?>
 <!-- END MODAL -->
 

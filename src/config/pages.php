@@ -2,8 +2,13 @@
 return [
     "home.php" => [
         "title"  => "Dashboard",
-        "modals" => ["AddInfant", "AssignCaregiver", "Delete"],
-        "data" => ['deleteId' => '']
+        "modals" => ["AddInfant", "AssignCaregiver", "EditCaregiver", "Delete"],
+        "data" => [
+            'editCaregiverId' => '',
+            'editCaregiverName' => '',
+            'editCaregiverInfaname' => '',
+            'deleteId' => ''
+        ]
     ],
 
     "profile.php" => [
