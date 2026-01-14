@@ -1,6 +1,5 @@
 <?php
 require_once('../../config/load.php');
-page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_fields = array('fName', 'username', 'password');
     validate_fields($req_fields);
@@ -15,12 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             first_name,
             last_name,
             username,
-            password
+            password,
+            status
         ) VALUES (
             '{$name}',
             '{$lName}',
             '{$user}',
-            '{$psw}'
+            '{$psw}',
+            '0'
         )";
 
         if ($db->query($sql)) {
