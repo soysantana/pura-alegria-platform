@@ -19,7 +19,12 @@ return [
     "activity.php" => [
         "title"  => "Activity",
         "modals" => ["AddInfant", "EditInfant", "Delete"],
-        "data" => ['deleteId' => '']
+        "data" => [
+            'editInfantId' => '',
+            'editInfantName' => '',
+            'editInfantActName' => '',
+            'deleteId' => ''
+        ]
     ],
 
     "add-activity.php" => [

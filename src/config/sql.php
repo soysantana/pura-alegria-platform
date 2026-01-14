@@ -289,7 +289,7 @@ function find_all_activity_logs()
   global $db;
   $sql  = "SELECT ";
   $sql .= "l.id AS activity_id, ";
-  $sql .= "i.first_name AS infant_name, i.picture AS infant_picture, ";
+  $sql .= "i.first_name AS infant_name, i.id AS infant_id, i.picture AS infant_picture, ";
   $sql .= "u.first_name AS caregiver_name, ";
   $sql .= "a.name AS activity_name, ";
   $sql .= "l.notes, ";
