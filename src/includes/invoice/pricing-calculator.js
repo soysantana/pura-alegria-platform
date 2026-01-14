@@ -196,6 +196,7 @@ function billingApp() {
                 const receiptNo = document.getElementById('receiptNo')?.value || '';
                 const tutorName = document.getElementById('tutorName')?.value || '';
                 const infantName = document.getElementById('infantName')?.value || '';
+                const observations = document.getElementById('observations')?.value || '';
 
                 // Agregar plantilla PNG de fondo
                 const img = new Image();
@@ -238,6 +239,7 @@ function billingApp() {
                     if (this.dayWeek && this.startTime && this.endTime && this.totalHours) {
                         doc.text(this.dayWeek + ' Días a la Semana Desde:(' + this.startTime + ') - Hasta:(' + this.endTime + ') - ' + this.totalHours + ' Horas al Día.', 75, 222);
                     }
+                    doc.text(observations, 75, 227);
                     // Crear blob para iframe
                     const pdfBlob = doc.output('blob');
                     resolve(pdfBlob);

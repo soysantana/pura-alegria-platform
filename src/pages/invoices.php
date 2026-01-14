@@ -32,7 +32,7 @@ page_require_level(3);
     <main>
       <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
         <!-- Breadcrumb Start -->
-        <div x-data="{ pageName: `Productos` }">
+        <div x-data="{ pageName: `Facturas` }">
           <?php include_once '../includes/breadcrumb.php'; ?>
         </div>
         <!-- Breadcrumb End -->
