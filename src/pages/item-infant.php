@@ -51,6 +51,7 @@ page_require_level(3);
 
 <!-- BEGIN MODAL -->
 <?php include_once '../includes/confirm-delete-modal.php'; ?>
+<div id="itemViewModal"></div>
 <!-- END MODAL -->
 
 <?php include_once '../components/footer.php'; ?>
