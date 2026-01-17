@@ -17,7 +17,7 @@
             <img
                 class="logo-icon"
                 :class="sidebarToggle ? 'lg:block' : 'hidden'"
-                src="../images/logo/logo-icon.svg"
+                src="/src/images/logo/logo-icon.svg"
                 alt="Logo" />
         </a>
     </div>
