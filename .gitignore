@@ -23,3 +23,6 @@ build/
 # Uploaded files
 src/uploads/*
 !src/uploads/.gitkeep
+
+# Apache configuration
+.htaccess
