@@ -270,7 +270,7 @@ function billingApp() {
 
                 reader.onloadend = () => {
                     document.getElementById("pdfBase64").value = reader.result.split(",")[1];
-                    document.getElementById("invoiceForm").submit();
+                    document.getElementById("invoiceForm").requestSubmit();
                 };
 
             } catch (err) {

@@ -2,13 +2,13 @@
 require_once('../../config/load.php');
 page_require_level(1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $req_fields = array('tutorId', 'infantId', 'serviceType', 'tandaType');
+    $req_fields = array('serviceType', 'tandaType');
     validate_fields($req_fields);
 
     if (empty($errors)) {
         $receipt_no = get_receipt_no();
-        $tutor_id = $db->escape($_POST['tutorId']);
-        $infant_id = $db->escape($_POST['infantId']);
+        $tutor_id  = empty($_POST['tutorId'])  ? "NULL" : (int) $_POST['tutorId'];
+        $infant_id = empty($_POST['infantId']) ? "NULL" : (int) $_POST['infantId'];
         $service_type = $db->escape($_POST['serviceType']);
         $tanda_type = $db->escape($_POST['tandaType']);
         $days_week = $db->escape($_POST['dayWeek']);
@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             invoice_pdf
         ) VALUES (
             '{$receipt_no}',
-            '{$tutor_id}',
-            '{$infant_id}',
+             {$tutor_id},
+             {$infant_id},
             '{$service_type}',
             '{$tanda_type}',
             '{$days_week}',

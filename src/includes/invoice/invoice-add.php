@@ -16,6 +16,9 @@
                         filteredInfants: [],
                         selectedTutor: "",
                         selectedInfant: "",
+                        tutorName: "",
+                        infantName: "",
+
                         isOptionSelected: false,
                         filterInfants(tutor_id) {
                             let tutor = this.tutors.find(t => t.id == tutor_id);
@@ -35,43 +38,84 @@
                         <input type="hidden" x-model="tutorName" id="tutorName" name="tutorName">
                         <input type="hidden" x-model="infantName" id="infantName" name="infantName">
                         <label for="tutorId" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Nombre del representante legal (padre, madre o tutor)</label>
-                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-                            <select x-model="selectedTutor" @change="filterInfants(selectedTutor);" id="tutorId" name="tutorId" required class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
-                                <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                    Seleccione el representante legal o tutor
-                                </option>
+                        <div class="relative z-20">
+                            <input
+                                type="text"
+                                list="tutorsList"
+                                name="tutorName"
+                                placeholder="Seleccione o escriba el representante legal"
+                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                x-model="tutorName"
+                                @input="
+                                let tutor = tutors.find(t =>
+                                (t.first_name + ' ' + (t.last_name || '')).toLowerCase()
+                                === tutorName.toLowerCase()
+                                );
+                                selectedTutor = tutor ? tutor.id : '';
+                                tutor && filterInfants(tutor.id);
+                                "
+                                required>
+                            <datalist id="tutorsList">
                                 <template x-for="tutor in tutors" :key="tutor.id">
-                                    <option :value="tutor.id" x-text="tutor.first_name + ' ' + tutor.last_name" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"></option>
+                                    <option :value="tutor.first_name + ' ' + (tutor.last_name || '')"></option>
                                 </template>
-                            </select>
-                            <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400">
-                                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </span>
+                            </datalist>
+                            <input type="hidden" name="tutorId" :value="selectedTutor">
                         </div>
                     </div>
 
                     <div>
                         <label for="infantId" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Nombre del Niño(a)</label>
-                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-                            <select x-model="selectedInfant" @change="setInfantName();" id="infantId" name="infantId" required class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
-                                <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                    Seleccione el niño(a)
-                                </option>
+                        <div class="relative z-20">
+                            <input
+                                type="text"
+                                list="infantsList"
+                                name="infantName"
+                                placeholder="Seleccione o escriba el niño(a)"
+                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                x-model="infantName"
+                                @input="
+                                let infant = filteredInfants.find(i =>
+                                (i.first_name + ' ' + (i.last_name || '')).toLowerCase()
+                                === infantName.toLowerCase()
+                                );
+                                selectedInfant = infant ? infant.id : '';
+                                infant && setInfantName();
+                                "
+                                required>
+                            <datalist id="infantsList">
                                 <template x-for="infant in filteredInfants" :key="infant.id">
-                                    <option :value="infant.id" x-text="infant.first_name + ' ' + infant.last_name" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"></option>
+                                    <option :value="infant.first_name + ' ' + (infant.last_name || '')"></option>
                                 </template>
-                            </select>
-                            <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400">
-                                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </span>
+                            </datalist>
+                            <input type="hidden" name="infantId" :value="selectedInfant">
                         </div>
                     </div>
                     <div class="col-span-full">
-                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-4">
+                            <div>
+                                <label for="invoiceType" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                    Tipo de facturación
+                                </label>
+                                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
+                                    <select x-model="invoiceType" id="invoiceType" name="invoiceType" required class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" :class="isOptionSelected &amp;&amp; 'text-gray-800 dark:text-white/90'" @change="isOptionSelected = true">
+                                        <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            Seleccione el tipo de factura
+                                        </option>
+                                        <option value="RECIBO DE PAGO" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            Recibo de pago
+                                        </option>
+                                        <option value="COTIZACION" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            Cotización
+                                        </option>
+                                    </select>
+                                    <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400">
+                                        <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                             <div>
                                 <label for="serviceType" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                                     Servicio
@@ -240,7 +284,7 @@
                 <div class="mt-5 rounded-xl border border-gray-100 bg-gray-50 p-4 sm:p-6 dark:border-gray-800 dark:bg-gray-900">
                     <div @submit.prevent="addProduct">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-12">
-                            <div class="w-full lg:col-span-3">
+                            <div class="w-full lg:col-span-2">
                                 <label for="paymentType" class="mb-1 inline-block text-sm font-semibold text-gray-700 dark:text-gray-400">Concepto de pago</label>
                                 <select x-model="paymentType" id="paymentType" name="paymentType" required x-ref="serviceSelect" class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
                                     <option value="" disabled selected>Seleccione un servicio</option>
@@ -248,7 +292,16 @@
                                     <option value="Mensualidad">Pago de Mensualidad</option>
                                 </select>
                             </div>
-                            <div class="w-full lg:col-span-3">
+                            <div class="w-full lg:col-span-2">
+                                <label for="paymentType" class="mb-1 inline-block text-sm font-semibold text-gray-700 dark:text-gray-400">Concepto de pago</label>
+                                <select x-model="paymentType" id="paymentType" name="paymentType" required x-ref="serviceSelect" class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
+                                    <option value="" disabled selected>Seleccione un servicio</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="Pagado">Pagado</option>
+                                    <option value="Aprobado">Aprobado</option>
+                                </select>
+                            </div>
+                            <div class="w-full lg:col-span-2">
                                 <label for="price" class="mb-1 inline-block text-sm font-semibold text-gray-700 dark:text-gray-400">Precio</label>
                                 <input x-model="form.price" type="number" id="price" name="price" readonly placeholder="Enter product price" class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" required>
                             </div>
