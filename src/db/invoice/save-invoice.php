@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tutor_id  = empty($_POST['tutorId'])  ? "NULL" : (int) $_POST['tutorId'];
         $infant_id = empty($_POST['infantId']) ? "NULL" : (int) $_POST['infantId'];
         $service_type = $db->escape($_POST['serviceType']);
+        $invoice_type = $db->escape($_POST['invoiceType']);
+        $payment_status = $db->escape($_POST['paymentStatus']);
         $tanda_type = $db->escape($_POST['tandaType']);
         $days_week = $db->escape($_POST['dayWeek']);
         $start_time = date("H:i:s", strtotime($_POST['startTime']));
@@ -35,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             tutor_id,
             infant_id,
             service_type,
+            invoice_type,
+            payment_status,
             tanda_type,
             days_week,
             start_time,
@@ -51,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              {$tutor_id},
              {$infant_id},
             '{$service_type}',
+            '{$invoice_type}',
+            '{$payment_status}',
             '{$tanda_type}',
             '{$days_week}',
             '{$start_time}',

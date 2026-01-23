@@ -1,3 +1,26 @@
+function addStatusImage(doc, status, x, y) {
+    return new Promise((resolve, reject) => {
+        const statusImages = {
+            Pendiente: '/src/images/invoice/status/pending.png',
+            Aprobado: '/src/images/invoice/status/approved.png',
+            Pagado: '/src/images/invoice/status/paid.png'
+        };
+
+        const img = new Image();
+        img.src = statusImages[status];
+
+        img.onload = () => {
+            doc.addImage(img, 'PNG', x, y, 33, 13);
+            resolve();
+        };
+
+        img.onerror = () => {
+            console.error('No se pudo cargar la imagen de estado:', status);
+            resolve();
+        };
+    });
+}
+
 function billingApp() {
     return {
 
@@ -8,6 +31,8 @@ function billingApp() {
         startTime: "",
         endTime: "",
         serviceType: "",
+        invoiceType: "",
+        paymentStatus: "",
         tanda: "",
         paymentType: "",
         dayWeek: "",
@@ -200,9 +225,13 @@ function billingApp() {
 
                 // Agregar plantilla PNG de fondo
                 const img = new Image();
-                img.src = '/src/includes/invoice/invoice-pay-1.png';
-                img.onload = () => {
+                img.src = '/src/images/invoice/invoice-template-v02.png';
+                img.onload = async () => {
                     doc.addImage(img, 'PNG', 0, 0, 241, 342);
+
+                    doc.setFont("Aptos", "bold");
+                    doc.setFontSize(18);
+                    doc.text(this.invoiceType, 151, 110, { align: 'center' });
 
                     doc.setFont("Aptos", "normal");
                     doc.setFontSize(9);
@@ -239,6 +268,7 @@ function billingApp() {
                     if (this.dayWeek && this.startTime && this.endTime && this.totalHours) {
                         doc.text(this.dayWeek + ' Días a la Semana Desde:(' + this.startTime + ') - Hasta:(' + this.endTime + ') - ' + this.totalHours + ' Horas al Día.', 75, 222);
                     }
+                    await addStatusImage(doc, this.paymentStatus, 79, 182);
                     doc.text(observations, 75, 227);
                     // Crear blob para iframe
                     const pdfBlob = doc.output('blob');

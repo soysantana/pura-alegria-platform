@@ -57,6 +57,13 @@
                     <th class="px-6 py-3 whitespace-nowrap">
                         <div class="flex items-center">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                Estado
+                            </p>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
                                 Accion
                             </p>
                         </div>
@@ -70,9 +77,9 @@
             $user_level = remove_junk($user['user_level']);
 
             if ($user_level == 1) {
-                $sql = "SELECT id, receipt_no, invoice_date, service_type, tanda_type, invoice_pdf FROM invoices;";
+                $sql = "SELECT id, receipt_no, invoice_date, service_type, tanda_type, payment_status, invoice_pdf FROM invoices;";
             } else {
-                $sql = "SELECT id, receipt_no, invoice_date, service_type, tanda_type, invoice_pdf FROM invoices WHERE tutor_id = '{$user_id}'";
+                $sql = "SELECT id, receipt_no, invoice_date, service_type, tanda_type, payment_status, invoice_pdf FROM invoices WHERE tutor_id = '{$user_id}'";
             }
             $invoices = find_by_sql($sql);
             ?>
@@ -117,11 +124,18 @@
                             </div>
                         </td>
                         <td class="px-6 py-3 whitespace-nowrap first:pl-0">
+                            <div class="flex items-center">
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                    <?php echo remove_junk(ucfirst($inv['payment_status'])); ?>
+                                </p>
+                            </div>
+                        </td>
+                        <td class="px-6 py-3 whitespace-nowrap first:pl-0">
                             <div class="flex items-center space-x-2">
-                                <?php $deleteActionUrl = '/src/db/product/delete-product.php'; ?>
+                                <?php $deleteActionUrl = '/src/db/invoice/delete-invoice.php'; ?>
                                 <svg
                                     @click="isDeleteModal = true;
-                                    deleteId = '<?php echo (int)$inv['id']; ?>';"
+                                    deleteId = '<?php echo base64_encode((int)$inv['id']); ?>';"
                                     class="cursor-pointer hover:fill-error-500 dark:hover:fill-error-500 fill-gray-700 dark:fill-gray-400"
                                     width="20"
                                     height="20"
