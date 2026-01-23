@@ -7,9 +7,13 @@
         name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/build/style.css">
-    <link rel="icon" href="/src/images/logo/logo.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" href="/src/images/logo/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/src/images/logo/favicon.svg" />
+    <link rel="shortcut icon" href="/src/images/logo/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/images/logo/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Pura Alegria" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>
         <?php
         if (!empty($page_title))
