@@ -7,14 +7,14 @@ Sistema web para **Pura Alegría**, una **guardería infantil** orientada al cui
 ## 📌 Características principales
 
 * 🏫 Gestión administrativa de guardería infantil
-* 🔐 Sistema de autenticación (login / logout)
+* 🔐 Sistema de autenticación
 * 👤 Gestión de usuarios
 * 📦 Gestión de servicios y recursos
-* 📁 Carga y manejo de archivos (imágenes de usuarios y productos)
-* 🧩 Componentes reutilizables (header, footer, navbar)
+* 📁 Carga y manejo de archivos
+* 🧩 Componentes reutilizables
 * 📱 Diseño responsive y amigable
-* 🎨 Soporte para tema (toggle de tema)
-* ⚙️ Manejo de errores personalizados (404 / 503)
+* 🎨 Soporte para temas
+* ⚙️ Manejo de errores personalizados
 
 ---
 
@@ -23,19 +23,20 @@ Sistema web para **Pura Alegría**, una **guardería infantil** orientada al cui
 ### Backend
 
 * **PHP**
-* **Apache** (con `.htaccess`)
+* **Apache**
 
 ### Frontend
 
 * **HTML5**
 * **CSS3** (PostCSS)
 * **JavaScript**
+* **Tailwind CSS**
 * **Webpack**
 
 ### Otros
 
-* **Node.js & npm** (para assets)
-* **Manifest.json** (PWA-ready)
+* **Node js** (NPM)
+* **Manifest.json** (PWA)
 
 ---
 
@@ -79,7 +80,6 @@ Sistema web para **Pura Alegría**, una **guardería infantil** orientada al cui
 * PHP 8.x recomendado
 * Apache o servidor compatible
 * Node.js 18+
-* npm
 
 ### 2️⃣ Instalación
 
@@ -109,15 +109,11 @@ http://localhost/pura-alegria
 
 ---
 
-## 🚀 Despliegue
-
----
-
 ## 🔐 Seguridad
 
-* Rutas protegidas mediante sesión
-* Logout seguro
-* Control de acceso por usuario
+* Rutas protegidas
+* Control de accesos no autorizados
+* Control de acceso por usuario y roles
 
 ---
 
@@ -127,7 +123,7 @@ http://localhost/pura-alegria
 
 ## ✨ Autor
 
-Desarrollado por **Arturo Santana**
+Desarrollado y Diseñado por **Arturo Santana** [@soysantana](https://www.instagram.com/soysantana2)
 
 ---
 
