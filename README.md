@@ -12,7 +12,7 @@ Sistema web para **Pura Alegría**, una **guardería infantil** orientada al cui
 * 📦 Gestión de servicios y recursos
 * 📁 Carga y manejo de archivos
 * 🧩 Componentes reutilizables
-* 📱 Diseño responsive y amigable
+* 📱 Diseño responsive
 * 🎨 Soporte para temas
 * ⚙️ Manejo de errores personalizados
 
